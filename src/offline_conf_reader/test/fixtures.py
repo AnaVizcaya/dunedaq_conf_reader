@@ -68,3 +68,11 @@ def variables_extracted():
         "phase_group": object,
         "phases": object,
     }
+
+
+@pytest.fixture
+def test_config():
+    path = Path(__file__)
+    config = path.parent / "test-config.data.xml"
+    config = os.path.abspath(config)
+    return config

@@ -1972,7 +1972,65 @@
  <attr name="eth_device_name" type="string" val="eno1"/>
 </obj>
 
-<obj class="Session" id="duplicate-test-config">
+<obj class="Session" id="ehn1-local-1x1-config">
+ <attr name="data_request_timeout_ms" type="u32" val="1000"/>
+ <attr name="data_rate_slowdown_factor" type="u32" val="1"/>
+ <attr name="controller_log_level" type="enum" val="INFO"/>
+ <attr name="log_path" type="string" val="/log"/>
+ <rel name="connectivity_service" class="ConnectivityService" id="ehn1-connectivity-service-config"/>
+ <rel name="environment">
+  <ref class="VariableSet" id="ehn1-variables"/>
+ </rel>
+ <rel name="disabled">
+  <ref class="DFApplication" id="df-02"/>
+  <ref class="DFApplication" id="df-03"/>
+  <ref class="ReadoutApplication" id="ru-02"/>
+ </rel>
+ <rel name="segment" class="Segment" id="root-segment"/>
+ <rel name="detector_configuration" class="DetectorConfig" id="dummy-detector"/>
+ <rel name="opmon_uri" class="OpMonURI" id="cern-opmon-uri"/>
+</obj>
+
+<obj class="Session" id="ehn1-local-2x3-config">
+ <attr name="data_request_timeout_ms" type="u32" val="1000"/>
+ <attr name="data_rate_slowdown_factor" type="u32" val="1"/>
+ <attr name="controller_log_level" type="enum" val="INFO"/>
+ <attr name="log_path" type="string" val="/log"/>
+ <rel name="connectivity_service" class="ConnectivityService" id="ehn1-connectivity-service-config"/>
+ <rel name="environment">
+  <ref class="VariableSet" id="ehn1-variables"/>
+ </rel>
+ <rel name="segment" class="Segment" id="root-segment"/>
+ <rel name="detector_configuration" class="DetectorConfig" id="dummy-detector"/>
+ <rel name="opmon_uri" class="OpMonURI" id="cern-opmon-uri"/>
+</obj>
+
+<obj class="Session" id="local-1x1-config">
+ <attr name="data_request_timeout_ms" type="u32" val="1000"/>
+ <attr name="data_rate_slowdown_factor" type="u32" val="1"/>
+ <attr name="controller_log_level" type="enum" val="INFO"/>
+ <rel name="connectivity_service" class="ConnectivityService" id="local-connectivity-service-config"/>
+ <rel name="environment">
+  <ref class="Variable" id="local-env-ers-verb"/>
+  <ref class="Variable" id="local-env-ers-info"/>
+  <ref class="Variable" id="local-env-ers-warning"/>
+  <ref class="Variable" id="local-env-ers-error"/>
+  <ref class="Variable" id="local-env-ers-fatal"/>
+ </rel>
+ <rel name="disabled">
+  <ref class="DFApplication" id="df-02"/>
+  <ref class="DFApplication" id="df-03"/>
+  <ref class="ReadoutApplication" id="ru-02"/>
+ </rel>
+ <rel name="segment" class="Segment" id="root-segment"/>
+ <rel name="infrastructure_applications">
+  <ref class="ConnectionService" id="local-connection-server"/>
+ </rel>
+ <rel name="detector_configuration" class="DetectorConfig" id="dummy-detector"/>
+ <rel name="opmon_uri" class="OpMonURI" id="local-opmon-uri"/>
+</obj>
+
+<obj class="Session" id="local-2x3-config">
  <attr name="data_request_timeout_ms" type="u32" val="1000"/>
  <attr name="data_rate_slowdown_factor" type="u32" val="1"/>
  <attr name="controller_log_level" type="enum" val="INFO"/>
@@ -1992,46 +2050,11 @@
  <rel name="opmon_uri" class="OpMonURI" id="local-opmon-uri"/>
 </obj>
 
-<obj class="Session" id="duplicate-test-config">
- <attr name="data_request_timeout_ms" type="u32" val="1000"/>
- <attr name="data_rate_slowdown_factor" type="u32" val="1"/>
- <attr name="controller_log_level" type="enum" val="INFO"/>
- <rel name="connectivity_service" class="ConnectivityService" id="local-connectivity-service-config"/>
- <rel name="environment">
-  <ref class="Variable" id="local-env-ers-verb"/>
-  <ref class="Variable" id="local-env-ers-info"/>
-  <ref class="Variable" id="local-env-ers-warning"/>
-  <ref class="Variable" id="local-env-ers-error"/>
-  <ref class="Variable" id="local-env-ers-fatal"/>
- </rel>
- <rel name="segment" class="Segment" id="root-segment"/>
- <rel name="infrastructure_applications">
-  <ref class="ConnectionService" id="local-connection-server"/>
- </rel>
- <rel name="detector_configuration" class="DetectorConfig" id="dummy-detector"/>
- <rel name="opmon_uri" class="OpMonURI" id="local-opmon-uri"/>
+<obj class="SourceIDConf" id="hsi-fake-srcid-01">
+ <attr name="sid" type="u32" val="1"/>
+ <attr name="subsystem" type="enum" val="HW_Signals_Interface"/>
 </obj>
 
-
-<obj class="Session" id="test-config">
- <attr name="data_request_timeout_ms" type="u32" val="1000"/>
- <attr name="data_rate_slowdown_factor" type="u32" val="1"/>
- <attr name="controller_log_level" type="enum" val="INFO"/>
- <rel name="connectivity_service" class="ConnectivityService" id="local-connectivity-service-config"/>
- <rel name="environment">
-  <ref class="Variable" id="local-env-ers-verb"/>
-  <ref class="Variable" id="local-env-ers-info"/>
-  <ref class="Variable" id="local-env-ers-warning"/>
-  <ref class="Variable" id="local-env-ers-error"/>
-  <ref class="Variable" id="local-env-ers-fatal"/>
- </rel>
- <rel name="segment" class="Segment" id="root-segment"/>
- <rel name="infrastructure_applications">
-  <ref class="ConnectionService" id="local-connection-server"/>
- </rel>
- <rel name="detector_configuration" class="DetectorConfig" id="dummy-detector"/>
- <rel name="opmon_uri" class="OpMonURI" id="local-opmon-uri"/>
-</obj>
 <obj class="SourceIDConf" id="hsi-fake-tc-srcid-1">
  <attr name="sid" type="u32" val="2"/>
  <attr name="subsystem" type="enum" val="Trigger"/>

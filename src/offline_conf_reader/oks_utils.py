@@ -1,4 +1,4 @@
-
+from rich import print
 
 def check_for_data_includes(root):
     for child in root:
@@ -19,19 +19,24 @@ def get_many(root, start_obj, object_name=None, class_name=None):
     if object_name is None and class_name is None:
         raise ValueError('Either \'object_name\' or \'class_name\' must be provided')
 
+    print(f'Object query {object_name=} and class_name {class_name=}')
+
     for child in start_obj:
         this_class_name = child.attrib.get('class')
+        if this_class_name is None:
+            this_class_name = child.attrib.get('type')
         if (class_name is not None) and (this_class_name is not None) and (this_class_name != class_name):
             continue
 
         this_object_name = child.attrib.get('name')
-        if child.tag == 'obj' and this_object_name is None:
+        if this_object_name is None:
             this_object_name = child.attrib.get('id')
+        print(f'Object \'{this_object_name}\' (\'{this_class_name}\') satisfies the class_name \'{class_name}\'')
 
         if (object_name is not None) and (this_object_name is not None) and (this_object_name != object_name):
             continue
 
-        print(f'object {this_object_name} satisfies name {object_name} and class {class_name}')
+        print(f'Object \'{this_object_name}\' ({child.tag}) satisfies object_name \'{object_name}\' and class_name \'{class_name}\'')
 
         if child.tag in ['attr', 'obj']:
             ret += [child]
