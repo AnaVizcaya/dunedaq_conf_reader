@@ -23,7 +23,7 @@ def find_session(root, session_name):
 
 
 def get(root, start_obj, object_name=None, class_name=None):
-
+    ret = []
     if object_name is None and class_name is None:
         raise ValueError('Either \'object_name\' or \'class_name\' must be provided')
 
@@ -35,14 +35,20 @@ def get(root, start_obj, object_name=None, class_name=None):
             continue
 
         if child.tag == 'attr':
-            return child
+            ret += [child]
 
         if child.tag == 'rel':
             for obj in root.findall('obj'):
                 if obj.attrib['id'] != child.attrib['id']:
                     continue
-                return obj
-    raise ValueError(f'Could not find object with name \'{object_name}\' or class \'{class_name}\' in {start_obj.attrib["id"]}, which is composed of: {[s.attrib["name"] for s in start_obj]}')
+                ret += [obj]
+
+    if ret == []:
+        raise ValueError(f'Could not find object with name \'{object_name}\' or class \'{class_name}\' in {start_obj.attrib["id"]}, which is composed of: {[s.attrib["name"] for s in start_obj]}')
+    elif len(ret)>1:
+        raise ValueError(f'Too many object satify name \'{object_name}\' or class \'{class_name}\' in {start_obj.attrib["id"]}, which is composed of: {[s.attrib["name"] for s in start_obj]}')
+
+    return ret[0]
 
 
 
