@@ -1,54 +1,8 @@
 from dataclasses import dataclass, Field, fields
 from pathlib import Path
 from defusedxml.ElementTree import parse
+from offline_conf_reader.oks_utils import find_session, get_one, get_many, check_for_data_includes
 
-
-def check_for_data_includes(root):
-    for child in root:
-        if child.tag != 'include':
-            continue
-        for include_file in child:
-            if include_file.tag != 'file':
-                continue
-            if include_file.attrib['path'].endswith('.schema.xml'):
-                continue
-            return True
-
-    return False
-
-def find_session(root, session_name):
-    for child in root:
-        if child.tag == 'obj' and child.attrib['class'] == "Session" and child.attrib['id'] == session_name:
-            return child
-
-
-def get(root, start_obj, object_name=None, class_name=None):
-    ret = []
-    if object_name is None and class_name is None:
-        raise ValueError('Either \'object_name\' or \'class_name\' must be provided')
-
-    for child in start_obj:
-        if class_name is not None and child.attrib.get('class') is not None and child.attrib.get('class') != class_name:
-            continue
-
-        if object_name is not None and child.attrib.get('name') is not None and child.attrib.get('name') != object_name:
-            continue
-
-        if child.tag == 'attr':
-            ret += [child]
-
-        if child.tag == 'rel':
-            for obj in root.findall('obj'):
-                if obj.attrib['id'] != child.attrib['id']:
-                    continue
-                ret += [obj]
-
-    if ret == []:
-        raise ValueError(f'Could not find object with name \'{object_name}\' or class \'{class_name}\' in {start_obj.attrib["id"]}, which is composed of: {[s.attrib["name"] for s in start_obj]}')
-    elif len(ret)>1:
-        raise ValueError(f'Too many object satify name \'{object_name}\' or class \'{class_name}\' in {start_obj.attrib["id"]}, which is composed of: {[s.attrib["name"] for s in start_obj]}')
-
-    return ret[0]
 
 
 
@@ -88,9 +42,9 @@ class OKSDataExtractor:
         for session_child in session:
             print(session_child.tag, session_child.attrib)
 
-        print(get(root, session, object_name='data_rate_slowdown_factor').attrib)
+        print(get_one(root, session, object_name='data_rate_slowdown_factor').attrib)
 
-        print(get(root, session, object_name='segment').attrib)
+        print(get_one(root, session, object_name='segment').attrib)
 
 
 
