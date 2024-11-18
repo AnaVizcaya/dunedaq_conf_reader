@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, Field, fields
 from pathlib import Path
 
 @dataclass
@@ -22,5 +22,15 @@ class OKSDataExtractor:
     phase_group: object = None
     phases: object = None
 
-    def extract():
+    def extract(self):
         pass
+
+    def get_variables(self) -> list[Field]:
+
+        data = []
+        for field in fields(self):
+            if field.name == 'session_name' or field.name == 'oks_file_path':
+                continue
+            data += [field]
+
+        return data
