@@ -2,11 +2,12 @@ import click
 from  offline_conf_reader.oks_data_extractor import OKSDataExtractor
 
 
-def list_variable_callback(dummy0, dummy1, dummy2):
-    ode = OKSDataExtractor("dummy", "dummy")
-    for v in ode.get_variables():
-        print(f'{v.name}: {v.type}')
-    exit(0)
+def list_variable_callback(ctx, param, value):
+    if value:
+        ode = OKSDataExtractor("dummy", "dummy")
+        for v in ode.get_variables():
+            print(f'{v.name}: {v.type}')
+        exit(0)
 
 @click.command("offline-conf-reader")
 @click.option("--list-variables", callback=list_variable_callback, is_flag=True)
