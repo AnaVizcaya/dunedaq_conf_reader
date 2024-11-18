@@ -1,5 +1,12 @@
 from dataclasses import dataclass, Field, fields
 from pathlib import Path
+from defusedxml.ElementTree import parse
+
+
+def check_for_includes(root):
+    for child in root:
+        if child.tag == 'include':
+            return True
 
 @dataclass
 class OKSDataExtractor:
@@ -22,8 +29,16 @@ class OKSDataExtractor:
     phase_group: object = None
     phases: object = None
 
-    def extract(self):
-        pass
+    def __post_init__(self):
+        if self.oks_file_path == 'dummy':
+            return
+
+        tree = parse(self.oks_file_path)
+        root = tree.getroot()
+
+        if check_for_includes(root):
+            raise RuntimeError('Include files are not supported, the configuration was not consolidated!')
+
 
     def get_variables(self) -> list[Field]:
 
