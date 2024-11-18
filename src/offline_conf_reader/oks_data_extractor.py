@@ -3,8 +3,8 @@ from pathlib import Path
 
 @dataclass
 class OKSDataExtractor:
-    session_name:str
     oks_file_path: Path
+    session_name:str
     buffer: object = None
     ac_couple: object = None
     pulse_dac: object = None
