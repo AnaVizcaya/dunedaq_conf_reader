@@ -13,23 +13,39 @@ ehn1_path = f"/dune-daq/online/{repo_name}.git"
 
 @pytest.fixture
 def ehn1_daqconfig_sessions():
-    sessions = {}
-    tempdir = tempfile.mkdtemp(prefix="ehn1-daqconfigs")
-    repo = Repo.clone_from(cern_gitlab_url + ehn1_path, tempdir)
-    root_dir = Path(tempdir)/"sessions"
-    for session_file in os.listdir(root_dir):
-        tree = parse(root_dir/session_file)
-        print(f"\n\nProcessing file \'{session_file}\'")
-        root = tree.getroot()
+    def _ehn1_daqconfig_sessions(consolidate_conf=True):
+        sessions = {}
+        tempdir = tempfile.mkdtemp(prefix="ehn1-daqconfigs")
+        repo = Repo.clone_from(cern_gitlab_url + ehn1_path, tempdir)
 
-        oks_elements = root.findall("obj")
-        for oks_element in oks_elements:
-            if oks_element.attrib["class"] == "Session":
-                session = oks_element.attrib["id"]
-                print(f" - Session \'{session}\' found")
-                sessions[session] = root_dir/session_file
-    print('\n')
-    return sessions
+        repo_directories = [x for x in os.listdir(tempdir) if os.path.isdir(Path(tempdir)/x)]
+
+        root_dir = Path(tempdir)/"sessions"
+
+        for session_file in os.listdir(root_dir):
+
+            if consolidate_conf:
+                print(f"\nConsolidating DB \'{session_file}\'")
+                os.environ["DUNEDAQ_DB_PATH"] = os.environ["DUNEDAQ_DB_PATH"] + ":".join(repo_directories)
+                from daqconf.consolidate import consolidate_db
+                consolidate_db(str(root_dir/session_file), str(root_dir/f"consolidated_{session_file}"))
+                session_file = root_dir/f"consolidated_{session_file}"
+            else:
+                session_file = root_dir/session_file
+
+            tree = parse(session_file)
+            print(f"\nProcessing file \'{session_file}\'")
+            root = tree.getroot()
+
+            oks_elements = root.findall("obj")
+            for oks_element in oks_elements:
+                if oks_element.attrib["class"] == "Session":
+                    session = oks_element.attrib["id"]
+                    print(f" - Session \'{session}\' found")
+                    sessions[session] = root_dir/session_file
+        print('\n')
+        return sessions
+    return _ehn1_daqconfig_sessions
 
 
 @pytest.fixture
