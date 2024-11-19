@@ -2012,7 +2012,6 @@
  <rel name="opmon_uri" class="OpMonURI" id="local-opmon-uri"/>
 </obj>
 
-
 <obj class="Session" id="test-config">
  <attr name="data_request_timeout_ms" type="u32" val="1000"/>
  <attr name="data_rate_slowdown_factor" type="u32" val="1"/>
@@ -2032,6 +2031,7 @@
  <rel name="detector_configuration" class="DetectorConfig" id="dummy-detector"/>
  <rel name="opmon_uri" class="OpMonURI" id="local-opmon-uri"/>
 </obj>
+
 <obj class="SourceIDConf" id="hsi-fake-tc-srcid-1">
  <attr name="sid" type="u32" val="2"/>
  <attr name="subsystem" type="enum" val="Trigger"/>
