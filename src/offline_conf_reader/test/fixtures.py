@@ -71,8 +71,10 @@ def variables_extracted():
 
 
 @pytest.fixture
-def test_config():
+def test_config_root():
     path = Path(__file__)
     config = path.parent / "test-config.data.xml"
     config = os.path.abspath(config)
-    return config
+    tree = parse(config)
+    root = tree.getroot()
+    return root

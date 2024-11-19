@@ -1,6 +1,154 @@
-from rich import print
+
+
+def get_many_object(root, object_id=None, class_name=None):
+    ret = []
+
+    should_check_id = object_id is not None
+    should_check_class = class_name is not None
+
+    for child in root:
+        if child.tag != 'obj':
+            continue
+
+        if should_check_id and child.attrib['id'] != object_id:
+            continue
+
+        if should_check_class and child.attrib['class'] != class_name:
+            continue
+
+        ret += [child]
+
+    if ret == []:
+        raise ValueError(f'Expected to find at least one object ({object_id=}, {class_name=}), but found none')
+
+    return ret
+
+
+def get_one_object(root, object_id=None, class_name=None):
+    ret = get_many_object(root, object_id, class_name)
+
+    if len(ret) != 1:
+        raise ValueError(f'Expected to find exactly one object ({object_id=}, {class_name=}), but found {len(ret)}')
+
+    return ret[0]
+
+
+def get_many_relation_by_class(root, start_object, name=None):
+    ret = []
+
+    for child in start_object:
+        if child.tag != 'rel':
+            continue
+
+        for grand_child in child:
+
+            ret += [
+                get_one_object(
+                    root,
+                    object_id = grand_child.attrib['id'],
+                    class_name = name,
+                )
+            ]
+
+    return ret
+
+
+def get_many_relation_by_name(root, start_object, name=None):
+    ret = []
+
+    for child in start_object:
+        if child.tag != 'rel':
+            continue
+
+        if child.attrib['name'] != name:
+            continue
+
+        for grand_child in child:
+            ret += [
+                get_one_object(
+                    root,
+                    object_id = grand_child.attrib['id'],
+                    class_name = grand_child.attrib['class'],
+                )
+            ]
+
+    return ret
+
+
+def get_one_relation_by_class(root, start, name=None):
+    ret = []
+
+    for child in start:
+        if child.tag != 'rel':
+            continue
+
+        if child.attrib['class'] != name:
+            continue
+
+        ret += [
+            get_one_object(
+                root,
+                object_id = child.attrib['id'],
+                class_name = name,
+            )
+        ]
+    if len(ret) != 1:
+        raise ValueError(f'Expected to find exactly one relation (class {name}), but found {len(ret)}')
+
+    return ret[0]
+
+
+def get_one_relation_by_name(root, start, name=None):
+    ret = []
+
+    for child in start:
+        if child.tag != 'rel':
+            continue
+
+        if child.attrib['name'] != name:
+            continue
+
+        ret += [
+            get_one_object(
+                root,
+                object_id = child.attrib['id'],
+                class_name = child.attrib['class'],
+            )
+        ]
+    if len(ret) != 1:
+        raise ValueError(f'Expected to find exactly one relation (class {name}), but found {len(ret)}')
+
+    return ret[0]
+
+def get_one_attribute(root, start_object, name=None):
+    ret = []
+
+    for child in start_object:
+        if child.tag != 'attr':
+            continue
+
+        if child.attrib['name'] != name:
+            continue
+
+        ret += [child]
+
+    if len(ret) != 1:
+        raise ValueError(f'Expected to find exactly one attribute ({attribute_name=}), but found {len(ret)}')
+
+    return ret[0]
+
+
+def find_session(root, session_name):
+
+    return get_one_object(
+        root = root,
+        class_name = 'Session',
+        object_id = session_name
+    )
+
 
 def check_for_data_includes(root):
+
     for child in root:
         if child.tag != 'include':
             continue
@@ -12,53 +160,3 @@ def check_for_data_includes(root):
             return True
 
     return False
-
-
-def get_many(root, start_obj, object_name=None, class_name=None):
-    ret = []
-    if object_name is None and class_name is None:
-        raise ValueError('Either \'object_name\' or \'class_name\' must be provided')
-
-    print(f'Object query {object_name=} and class_name {class_name=}')
-
-    for child in start_obj:
-        this_class_name = child.attrib.get('class')
-        if this_class_name is None:
-            this_class_name = child.attrib.get('type')
-        if (class_name is not None) and (this_class_name is not None) and (this_class_name != class_name):
-            continue
-
-        this_object_name = child.attrib.get('name')
-        if this_object_name is None:
-            this_object_name = child.attrib.get('id')
-        print(f'Object \'{this_object_name}\' (\'{this_class_name}\') satisfies the class_name \'{class_name}\'')
-
-        if (object_name is not None) and (this_object_name is not None) and (this_object_name != object_name):
-            continue
-
-        print(f'Object \'{this_object_name}\' ({child.tag}) satisfies object_name \'{object_name}\' and class_name \'{class_name}\'')
-
-        if child.tag in ['attr', 'obj']:
-            ret += [child]
-
-        if child.tag == 'rel':
-            for obj in root.findall('obj'):
-                if obj.attrib['id'] != child.attrib['id']:
-                    continue
-                ret += [obj]
-
-    return ret
-
-
-def get_one(root, start_obj, object_name=None, class_name=None):
-    ret = get_many(root, start_obj, object_name, class_name)
-    if ret == []:
-        raise ValueError(f'Could not find object with name \'{object_name}\' or class \'{class_name}\' in {start_obj.attrib["id"]}, which is composed of: {[s.attrib["name"] for s in start_obj]}')
-    elif len(ret) > 1:
-        raise ValueError(f'Too many object satify name \'{object_name}\' or class \'{class_name}\' in {start_obj.attrib["id"]}, which is composed of: {[s.attrib["name"] for s in start_obj]}')
-
-    return ret[0]
-
-
-def find_session(root, session_name):
-    return get_one(root, root, class_name='Session', object_name=session_name)
