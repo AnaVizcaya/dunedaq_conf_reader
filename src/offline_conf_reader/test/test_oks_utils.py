@@ -1,6 +1,7 @@
 import pytest
 from offline_conf_reader.test.fixtures import test_config_root, ehn1_daqconfig_sessions
 from offline_conf_reader.oks_utils import (
+    OKSValueError,
     find_session,
     get_one_object,
     get_many_object,
@@ -9,7 +10,8 @@ from offline_conf_reader.oks_utils import (
     get_many_relation_by_class,
     get_many_relation_by_name,
     get_one_attribute,
-    check_for_data_includes
+    check_for_data_includes,
+    get,
 )
 from defusedxml.ElementTree import parse
 
@@ -20,10 +22,10 @@ def test_get_one_object_by_object_id(test_config_root):
     assert session.attrib['id'] == "test-config"
     assert session.attrib['class'] == "Session"
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_one_object(test_config_root, object_id="duplicate-test-config")
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_one_object(test_config_root, object_id="non-existing-test-config")
 
 
@@ -33,10 +35,10 @@ def test_get_one_object_by_class_name(test_config_root):
     assert avx.attrib['id'] == "tpg-absrs-proc"
     assert avx.attrib['class'] == "AVXAbsRunSumProcessor"
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_one_object(test_config_root, class_name="Session")
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_one_object(test_config_root, class_name="NotASession")
 
 
@@ -46,13 +48,13 @@ def test_get_one_object_by_object_id_and_class_name(test_config_root):
     assert avx.attrib['id'] == "tpg-absrs-proc"
     assert avx.attrib['class'] == "AVXAbsRunSumProcessor"
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_one_object(test_config_root, class_name="Session", object_id="bananas")
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_one_object(test_config_root, class_name="Bananas", object_id="tpg-absrs-proc")
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_one_object(test_config_root, class_name="Session", object_id="duplicate-test-config")
 
 
@@ -62,10 +64,10 @@ def test_find_session(test_config_root):
     assert session.attrib['id'] == 'test-config'
     assert session.attrib['class'] == 'Session'
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         find_session(test_config_root, 'duplicate-test-config')
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         find_session(test_config_root, 'non-existing-test-config')
 
 
@@ -83,7 +85,7 @@ def test_get_many_object_by_object_id(test_config_root):
     assert sessions[0].attrib['class'] == "Session"
     assert sessions[1].attrib['class'] == "Session"
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_many_object(test_config_root, object_id="non-existing-test-config")
 
 
@@ -102,7 +104,7 @@ def test_get_many_object_by_class_name(test_config_root):
     ids.remove("duplicate-test-config")
     assert "duplicate-test-config" in ids
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_many_object(test_config_root, class_name="NotASession")
 
 
@@ -117,10 +119,10 @@ def test_get_many_object_by_object_id_and_class_name(test_config_root):
     assert sessions[0].attrib['id'] == "test-config"
     assert sessions[0].attrib['class'] == "Session"
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_many_object(test_config_root, class_name="NotASession", object_id="test-config")
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_many_object(test_config_root, class_name="Session", object_id="not-a-test-config")
 
 
@@ -131,10 +133,10 @@ def test_get_one_relation_by_class(test_config_root):
     assert segment.attrib['id'] == 'root-segment'
     assert segment.attrib['class'] == 'Segment'
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_one_relation_by_class(test_config_root, session, name="NotASegment")
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_one_relation_by_class(test_config_root, session, name="Variable")
 
 
@@ -145,10 +147,10 @@ def test_get_one_relation_by_name(test_config_root):
     assert segment.attrib['id'] == 'root-segment'
     assert segment.attrib['class'] == 'Segment'
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_one_relation_by_class(test_config_root, session, name="not-a-segment")
 
-    with pytest.raises(Exception):
+    with pytest.raises(OKSValueError):
         get_one_relation_by_class(test_config_root, session, name="environment")
 
 
@@ -166,8 +168,8 @@ def test_get_many_relation_by_class(test_config_root):
     assert 'trg-segment' in ids
     assert 'hsi-fake-segment' in ids
 
-    with pytest.raises(Exception):
-        get_many_relation_by_class(test_config_root, segment, name="NotASegment")
+    with pytest.raises(OKSValueError):
+        get_many_relation_by_class(test_config_root, root_segment, name="NotASegment")
 
 
 def test_get_many_relation_by_name(test_config_root):
@@ -184,8 +186,8 @@ def test_get_many_relation_by_name(test_config_root):
     assert 'trg-segment' in ids
     assert 'hsi-fake-segment' in ids
 
-    with pytest.raises(Exception):
-        get_many_relation_by_name(test_config_root, segment, name="not-segments")
+    with pytest.raises(OKSValueError):
+        get_many_relation_by_name(test_config_root, root_segment, name="not-segments")
 
 
 def test_get_one_attribute(test_config_root):
@@ -206,3 +208,27 @@ def test_does_not_accept_include(ehn1_daqconfig_sessions):
         tree = parse(file_path)
         root = tree.getroot()
         assert not check_for_data_includes(root)
+
+def test_get(test_config_root):
+    session = find_session(test_config_root, 'test-config')
+
+    controller_log_level = get(test_config_root, session, name="controller_log_level")
+    assert controller_log_level is not None
+    assert controller_log_level.attrib['name'] == 'controller_log_level'
+    assert controller_log_level.attrib['val'] == 'INFO'
+
+    detector_configuration = get(test_config_root, session, name="detector_configuration")
+    assert detector_configuration is not None
+    assert detector_configuration.attrib['id'] == 'dummy-detector'
+    assert detector_configuration.attrib['class'] == 'DetectorConfig'
+
+    environment = get(test_config_root, session, name="environment")
+    assert len(environment) == 5
+    ids = [env.attrib['id'] for env in environment]
+    classes = [env.attrib['class'] for env in environment]
+    assert 'local-env-ers-verb' in ids
+    assert 'local-env-ers-info' in ids
+    assert 'local-env-ers-warning' in ids
+    assert 'local-env-ers-error' in ids
+    assert 'local-env-ers-fatal' in ids
+    assert all([class_ == 'Variable' for class_ in classes])

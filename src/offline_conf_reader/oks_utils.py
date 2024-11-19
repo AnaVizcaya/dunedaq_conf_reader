@@ -1,5 +1,9 @@
 
 
+class OKSValueError(Exception):
+    pass
+
+
 def get_many_object(root, object_id=None, class_name=None):
     ret = []
 
@@ -19,7 +23,7 @@ def get_many_object(root, object_id=None, class_name=None):
         ret += [child]
 
     if ret == []:
-        raise ValueError(f'Expected to find at least one object ({object_id=}, {class_name=}), but found none')
+        raise OKSValueError(f'Expected to find at least one object ({object_id=}, {class_name=}), but found none')
 
     return ret
 
@@ -28,7 +32,7 @@ def get_one_object(root, object_id=None, class_name=None):
     ret = get_many_object(root, object_id, class_name)
 
     if len(ret) != 1:
-        raise ValueError(f'Expected to find exactly one object ({object_id=}, {class_name=}), but found {len(ret)}')
+        raise OKSValueError(f'Expected to find exactly one object ({object_id=}, {class_name=}), but found {len(ret)}')
 
     return ret[0]
 
@@ -72,6 +76,8 @@ def get_many_relation_by_name(root, start_object, name=None):
                 )
             ]
 
+    if ret == []:
+        raise OKSValueError(f'Expected to find at least one relation ({name=}), but found none')
     return ret
 
 
@@ -93,12 +99,12 @@ def get_one_relation_by_class(root, start, name=None):
             )
         ]
     if len(ret) != 1:
-        raise ValueError(f'Expected to find exactly one relation (class {name}), but found {len(ret)}')
+        raise OKSValueError(f'Expected to find exactly one relation (class {name}), but found {len(ret)}')
 
     return ret[0]
 
 
-def get_one_relation_by_name(root, start, name=None):
+def get_one_relation_by_name(root, start, name=None, catch_oks_value_errors=False):
     ret = []
 
     for child in start:
@@ -108,15 +114,20 @@ def get_one_relation_by_name(root, start, name=None):
         if child.attrib['name'] != name:
             continue
 
-        ret += [
-            get_one_object(
+        try:
+            obj = get_one_object(
                 root,
                 object_id = child.attrib['id'],
                 class_name = child.attrib['class'],
             )
-        ]
+            ret += [obj]
+        except OKSValueError as e:
+            if catch_oks_value_errors:
+                continue
+            raise e
+
     if len(ret) != 1:
-        raise ValueError(f'Expected to find exactly one relation (class {name}), but found {len(ret)}')
+        raise OKSValueError(f'Expected to find exactly one relation (class {name}), but found {len(ret)}')
 
     return ret[0]
 
@@ -133,7 +144,7 @@ def get_one_attribute(root, start_object, name=None):
         ret += [child]
 
     if len(ret) != 1:
-        raise ValueError(f'Expected to find exactly one attribute ({attribute_name=}), but found {len(ret)}')
+        raise OKSValueError(f'Expected to find exactly one attribute ({attribute_name=}), but found {len(ret)}')
 
     return ret[0]
 
@@ -145,6 +156,20 @@ def find_session(root, session_name):
         class_name = 'Session',
         object_id = session_name
     )
+
+def get(root, start_object, name):
+    try:
+        return get_many_relation_by_name(root, start_object, name)
+    except OKSValueError:
+        pass
+
+    try:
+        return get_one_relation_by_name(root, start_object, name, catch_oks_value_errors=True)
+    except OKSValueError:
+        pass
+
+    return get_one_attribute(root, start_object, name)
+
 
 
 def check_for_data_includes(root):
