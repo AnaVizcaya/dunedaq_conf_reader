@@ -197,6 +197,10 @@ def test_get_one_attribute(test_config_root):
     assert controller_log_level.attrib['name'] == 'controller_log_level'
     assert controller_log_level.attrib['val'] == 'INFO'
 
+    with pytest.raises(OKSValueError):
+        get_one_attribute(test_config_root, session, name="not-controller_log_level")
+
+
 
 def test_does_not_accept_include(ehn1_daqconfig_sessions):
     for file_path in ehn1_daqconfig_sessions(False).values():
@@ -208,6 +212,7 @@ def test_does_not_accept_include(ehn1_daqconfig_sessions):
         tree = parse(file_path)
         root = tree.getroot()
         assert not check_for_data_includes(root)
+
 
 def test_get(test_config_root):
     session = find_session(test_config_root, 'test-config')

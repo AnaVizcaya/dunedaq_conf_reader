@@ -131,6 +131,7 @@ def get_one_relation_by_name(root, start, name=None, catch_oks_value_errors=Fals
 
     return ret[0]
 
+
 def get_one_attribute(root, start_object, name=None):
     ret = []
 
@@ -144,7 +145,7 @@ def get_one_attribute(root, start_object, name=None):
         ret += [child]
 
     if len(ret) != 1:
-        raise OKSValueError(f'Expected to find exactly one attribute ({attribute_name=}), but found {len(ret)}')
+        raise OKSValueError(f'Expected to find exactly one attribute ({name=}), but found {len(ret)}')
 
     return ret[0]
 
@@ -156,6 +157,7 @@ def find_session(root, session_name):
         class_name = 'Session',
         object_id = session_name
     )
+
 
 def get(root, start_object, name):
     try:
@@ -185,3 +187,20 @@ def check_for_data_includes(root):
             return True
 
     return False
+
+def oks_cast(value, type_name):
+    # Unsupported: date, time, uid, enum, class
+
+    if type_name in ['s8', 'u8', 's16', 'u16', 's32', 'u32', 's64', 'u64']:
+        return int(value)
+    elif type_name in ['float', 'double']:
+        return float(value)
+    elif type_name == 'bool':
+        return bool(int(value))
+
+    print(f'Unsupported type {type_name} for value {value}, returning a string')
+    return str(value)
+
+
+def get_value(attribute):
+    return oks_cast(attribute.attrib['val'], attribute.attrib['type'])
