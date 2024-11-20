@@ -3,26 +3,28 @@ from pathlib import Path
 from defusedxml.ElementTree import parse
 from offline_conf_reader.oks_utils import find_session, check_for_data_includes, get, get_value
 
+detector_types = ['CRP', 'APA']
 
-def get_wiec_application(root, session):
-    wiec_applications = []
+def get_application(root, session, application_name):
+    selected_applications = []
 
     root_segment = get(root, session, "segment")
     segments = get(root, root_segment, "segments")
     for segment in segments:
         applications = get(root, segment, "applications")
         for application in applications:
-            if application.attrib['class'] == 'WIECApplication':
-                wiec_applications += [application]
+            if application.attrib['class'] == application_name:
+                selected_applications += [application]
 
-    return wiec_applications
+    return selected_applications
+
 
 @dataclass
 class OKSDataExtractor:
     oks_file_path: Path
     session_name:str
     buffer               : object = None
-    ac_couple            : object = None
+    ac_couple            : dict[str,bool] = None
     pulse_dac            : object = None
     pulser               : dict[str,bool] = None
     baseline             : dict[str,int]  = None
@@ -33,7 +35,7 @@ class OKSDataExtractor:
     enable_femb_fake_data: object = None
     test_cap             : dict[str,bool] = None
     APAs                 : list[int] = None
-    FEMBs                : list[int] = None
+    FEMBs                : object = None
     pulse_period         : dict[str,int]  = None
     phase_group          : object = None
     phases               : object = None
@@ -48,7 +50,9 @@ class OKSDataExtractor:
         self.gain         = {}
         self.leak_10x     = {}
         self.peak_time    = {}
+        self.test_cap     = {}
         self.pulse_period = {}
+        self.APAs         = []
 
         tree = parse(self.oks_file_path)
         root = tree.getroot()
@@ -57,7 +61,7 @@ class OKSDataExtractor:
             raise RuntimeError('Include files are not supported, the configuration was not consolidated!')
 
         session = find_session(root, self.session_name)
-        wiec_applications = get_wiec_application(root, session)
+        wiec_applications = get_application(root, session, "WIECApplication")
 
         for wiec_application in wiec_applications:
             wiec_application_name = wiec_application.attrib['id']
@@ -68,23 +72,36 @@ class OKSDataExtractor:
             self.pulser[wiec_application_name] = get_value(pulser_setting)
 
             wib_pulser_setting = get(root, wib_settings, "wib_pulser")
-            self.pulse_period[wiec_application_name] = get_value( get(root, wib_settings, "pulse_period"))
+            self.pulse_period[wiec_application_name] = get_value(
+                get(root, wib_pulser_setting, "pulse_period")
+            )
 
             fembs =  [get(root, wib_settings, "femb0")]
             fembs += [get(root, wib_settings, "femb1")]
             fembs += [get(root, wib_settings, "femb2")]
             fembs += [get(root, wib_settings, "femb3")]
 
-            self.extract_femb_variables(self.leak_10x , "leak_10x" , fembs, wiec_application_name)
-            self.extract_femb_variables(self.ac_couple, "ac_couple", fembs, wiec_application_name)
-            self.extract_femb_variables(self.peak_time, "peak_time", fembs, wiec_application_name)
-            self.extract_femb_variables(self.baseline , "baseline" , fembs, wiec_application_name)
+            self.extract_femb_variables(root, self.leak_10x , "leak_10x" , fembs, wiec_application_name)
+            self.extract_femb_variables(root, self.ac_couple, "ac_couple", fembs, wiec_application_name)
+            self.extract_femb_variables(root, self.peak_time, "peak_time", fembs, wiec_application_name)
+            self.extract_femb_variables(root, self.baseline , "baseline" , fembs, wiec_application_name)
+            self.extract_femb_variables(root, self.test_cap , "test_cap" , fembs, wiec_application_name)
 
 
+        ru_applications = get_application(root, session, "ReadoutApplication")
+        for ru_application in ru_applications:
+            contains = get(root, ru_application, "contains")
+            connections = [contain.attrib['id'].upper().replace('_', "-") for contain in contains]
+            for connection in connections:
+                for i in connection.split('-'):
+                    for detector_type in detector_types:
+                        if detector_type in i:
+                            self.APAs += [i]
 
-    def extract_femb_variables(self, field, name, fembs, prefix):
+    def extract_femb_variables(self, root, field, name, fembs, prefix):
         for i, femb in enumerate(fembs):
             field[prefix+f"_femb{i}"] = get_value(get(root, femb, name))
+
 
     def get_variables(self) -> list[Field]:
 
