@@ -22,5 +22,17 @@ def main(config_file:str, session_name:str, variable_name:list[str], list_variab
     ode = OKSDataExtractor(config_file, session_name)
     for var in variable_name:
         value = getattr(ode, var)
+
         if value is None:
             print(f"ERROR: Variable {var} not found")
+
+        if type(value) is dict:
+            for k, v in value.items():
+                print(f'{k}: {v}')
+
+        elif type(value) is list:
+            for v in value:
+                print(v)
+
+        else:
+            print(value)
