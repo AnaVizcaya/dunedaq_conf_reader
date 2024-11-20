@@ -8,12 +8,12 @@ pip install .
 ```
 
 ## Python usage
- - Import the `OKSDataExtractor`,
+ - Import the `DUNEDAQConfDataExtractor`,
  - Create an instance of that class, with the path of the file you are reading, and the `Session` identifier.
 
 ```python
-from offline_conf_reader.oks_data_extractor import OKSDataExtractor
-ode = OKSDataExtractor("path/to/file", "session_name")
+from offline_conf_reader.oks_data_extractor import DUNEDAQConfDataExtractor
+cde = DUNEDAQConfDataExtractor("path/to/file", "session_name")
 ```
 
 You can now access the variables:
@@ -35,7 +35,7 @@ You can now access the variables:
  - `phases`: object
 
 ```python
->> print(ode.buffer)
+>> print(cde.buffer)
 >> 1
 ```
 
