@@ -1,10 +1,10 @@
 import click
-from  offline_conf_reader.oks_data_extractor import OKSDataExtractor
+from  offline_conf_reader.dunedaq_conf_data_extractor import DUNEDAQConfDataExtractor
 
 
 def list_variable_callback(ctx, param, value):
     if value:
-        ode = OKSDataExtractor("dummy", "dummy")
+        ode = DUNEDAQConfDataExtractor("dummy", "dummy")
         for v in ode.get_variables():
             print(f'{v.name}: {v.type}')
         exit(0)
@@ -19,7 +19,7 @@ def main(config_file:str, session_name:str, variable_name:list[str], list_variab
     if list_variables:
         return
 
-    ode = OKSDataExtractor(config_file, session_name)
+    ode = DUNEDAQConfDataExtractor(config_file, session_name)
     for var in variable_name:
         value = getattr(ode, var)
 

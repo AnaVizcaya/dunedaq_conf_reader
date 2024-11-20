@@ -20,7 +20,7 @@ def get_application(root, session, application_name):
 
 
 @dataclass
-class OKSDataExtractor:
+class DUNEDAQConfDataExtractor:
     oks_file_path: Path
     session_name:str
     buffer               : object = None
