@@ -1,16 +1,18 @@
 import click
-from  offline_conf_reader.dunedaq_conf_data_extractor import DUNEDAQConfDataExtractor
-
+from  dunedaq_conf_reader.dunedaq_conf_data_extractor import DUNEDAQConfDataExtractor
+import logging
+from rich.logging import RichHandler
+logging.basicConfig(level=logging.INFO, format="%(message)s", handlers=[RichHandler()])
 
 def list_variable_callback(ctx, param, value):
     if value:
-        ode = DUNEDAQConfDataExtractor("dummy", "dummy")
+        ode = DUNEDAQConfDataExtractor()
         for v in ode.get_variables():
             print(f'{v.name}: {v.type}')
         exit(0)
 
-@click.command("offline-conf-reader")
-@click.option("--list-variables", callback=list_variable_callback, is_flag=True)
+@click.command("dunedaq-conf-reader")
+@click.option("-l", "--list-variables", callback=list_variable_callback, is_flag=True)
 @click.argument("config_file", type=click.Path(exists=True))
 @click.argument('session_name', type=str)
 @click.argument("variable_name", type=str, nargs=-1)
