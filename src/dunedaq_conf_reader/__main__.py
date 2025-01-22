@@ -30,11 +30,10 @@ def main(config_file:str, session_name:str, variable_name:list[str], list_variab
 
         if type(value) is dict:
             for k, v in value.items():
-                print(f'{k}: {v}')
-
-        elif type(value) is list:
-            for v in value:
-                print(v)
+                if isinstance(k, tuple):
+                    print(f'{k[0]} FEMB{k[1]}: {v}')
+                else:
+                    print(f'{k}: {v}')
 
         else:
             print(value)
