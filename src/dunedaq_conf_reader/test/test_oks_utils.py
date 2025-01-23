@@ -1,5 +1,5 @@
 import pytest
-from dunedaq_conf_reader.test.fixtures import test_config_root, ehn1_daqconfig_sessions
+from dunedaq_conf_reader.test.fixtures import test_config_root
 from dunedaq_conf_reader.oks_utils import (
     OKSValueError,
     find_session,

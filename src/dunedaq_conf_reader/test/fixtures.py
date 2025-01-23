@@ -7,30 +7,31 @@ from pathlib import Path
 from rich import print
 from daqconf.jsonify import jsonify_xml_data
 
-cern_gitlab_url = "ssh://git@gitlab.cern.ch:7999"
-repo_name = "ehn1-daqconfigs"
-ehn1_path = f"/dune-daq/online/{repo_name}.git"
-
+repo_dict = {
+    "base" : "ssh://git@gitlab.cern.ch:7999/dune-daq/online/ehn1-daqconfigs.git",
+    "operation" : "ssh://git@gitlab.cern.ch:7999/dune-daq/online/np02-configs-operation.git"
+}
 
 @pytest.fixture
-def ehn1_daqconfig_sessions():
-    sessions = {}
+def ehn1_daqconfig_file_and_sessions(branch_name, repository):
+    files_sessions = {}
+
     tempdir = tempfile.mkdtemp(prefix="ehn1-daqconfigs")
-    repo = Repo.clone_from(cern_gitlab_url + ehn1_path, tempdir)
+    repo = Repo.clone_from(repo_dict[repository], tempdir, branch=branch_name)
 
     repo_directories = [x for x in os.listdir(tempdir) if os.path.isdir(Path(tempdir)/x)]
 
-    root_dir = Path(tempdir)/"sessions"
+    root_dir = Path(tempdir) / "sessions"
 
     for session_file in os.listdir(root_dir):
 
-        print(f"Jsonifying DB \'{session_file}\'")
+        print(f"\nJsonifying DB \'{session_file}\'")
         os.environ["DUNEDAQ_DB_PATH"] = os.environ["DUNEDAQ_DB_PATH"] + ":".join(repo_directories)
         xml_file = str(root_dir/session_file)
         json_file = xml_file.replace(".xml", ".json")
         jsonify_xml_data(xml_file, json_file)
 
-        print(f"\nProcessing file \'{json_file}\'")
+        print(f"Processing file \'{json_file}\'")
         with open(json_file, "r") as f:
             data = json.load(f)
 
@@ -38,9 +39,12 @@ def ehn1_daqconfig_sessions():
                 if key.endswith("@Session"):
                     session_name = key.replace("@Session", "")
                     print(f" - Session \'{session_name}\' found")
-                    sessions[session_name] = root_dir/session_file
+                    if json_file not in files_sessions:
+                        files_sessions[json_file] = []
+                    files_sessions[json_file].append(session_name)
+
     print('\n')
-    return sessions
+    return files_sessions
 
 
 @pytest.fixture
