@@ -7,17 +7,13 @@ from pathlib import Path
 from rich import print
 from daqconf.jsonify import jsonify_xml_data
 
-repo_dict = {
-    "base" : "ssh://git@gitlab.cern.ch:7999/dune-daq/online/ehn1-daqconfigs.git",
-    "operation" : "ssh://git@gitlab.cern.ch:7999/dune-daq/online/np02-configs-operation.git"
-}
 
 @pytest.fixture
 def ehn1_daqconfig_file_and_sessions(branch_name, repository):
     files_sessions = {}
 
     tempdir = tempfile.mkdtemp(prefix="ehn1-daqconfigs")
-    repo = Repo.clone_from(repo_dict[repository], tempdir, branch=branch_name)
+    repo = Repo.clone_from(repository, tempdir, branch=branch_name)
 
     repo_directories = [x for x in os.listdir(tempdir) if os.path.isdir(Path(tempdir)/x)]
 
