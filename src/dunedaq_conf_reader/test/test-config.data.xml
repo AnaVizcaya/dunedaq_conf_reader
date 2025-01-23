@@ -151,21 +151,6 @@
  <rel name="service" class="Service" id="local-connectivity-service"/>
 </obj>
 
-<obj class="CustomTCMakerConf" id="cstm-tc-generator">
- <attr name="timestamp_method" type="enum" val="kTimeSync"/>
- <attr name="latency_monitoring" type="bool" val="1"/>
- <attr name="template_for" type="class" val="CustomTCMaker"/>
- <attr name="trigger_types" type="u32">
-  <data val="3"/>
-  <data val="7"/>
- </attr>
- <attr name="trigger_intervals" type="u32">
-  <data val="62500000"/>
-  <data val="62500000"/>
- </attr>
- <attr name="clock_frequency_hz" type="u32" val="62500000"/>
-</obj>
-
 <obj class="DFApplication" id="df-01">
  <attr name="application_name" type="string" val="daq_application"/>
  <rel name="runs_on" class="VirtualHost" id="vlocalhost"/>
@@ -864,7 +849,6 @@
   <ref class="Service" id="hsi-fake-01_control"/>
  </rel>
  <rel name="opmon_conf" class="OpMonConf" id="slow-all-monitoring"/>
- <rel name="source_id" class="SourceIDConf" id="hsi-fake-srcid-01"/>
  <rel name="queue_rules">
   <ref class="QueueConnectionRule" id="hsi-dlh-data-requests-queue-rule"/>
  </rel>
@@ -1970,26 +1954,6 @@
  <attr name="protocol" type="string" val="tcp"/>
  <attr name="port" type="u16" val="0"/>
  <attr name="eth_device_name" type="string" val="eno1"/>
-</obj>
-
-<obj class="Session" id="duplicate-test-config">
- <attr name="data_request_timeout_ms" type="u32" val="1000"/>
- <attr name="data_rate_slowdown_factor" type="u32" val="1"/>
- <attr name="controller_log_level" type="enum" val="INFO"/>
- <rel name="connectivity_service" class="ConnectivityService" id="local-connectivity-service-config"/>
- <rel name="environment">
-  <ref class="Variable" id="local-env-ers-verb"/>
-  <ref class="Variable" id="local-env-ers-info"/>
-  <ref class="Variable" id="local-env-ers-warning"/>
-  <ref class="Variable" id="local-env-ers-error"/>
-  <ref class="Variable" id="local-env-ers-fatal"/>
- </rel>
- <rel name="segment" class="Segment" id="root-segment"/>
- <rel name="infrastructure_applications">
-  <ref class="ConnectionService" id="local-connection-server"/>
- </rel>
- <rel name="detector_configuration" class="DetectorConfig" id="dummy-detector"/>
- <rel name="opmon_uri" class="OpMonURI" id="local-opmon-uri"/>
 </obj>
 
 <obj class="Session" id="duplicate-test-config">

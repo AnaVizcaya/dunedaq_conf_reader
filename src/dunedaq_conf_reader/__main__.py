@@ -2,7 +2,9 @@ import click
 from  dunedaq_conf_reader.dunedaq_conf_data_extractor import DUNEDAQConfDataExtractor
 import logging
 from rich.logging import RichHandler
+
 logging.basicConfig(level=logging.INFO, format="%(message)s", handlers=[RichHandler()])
+
 
 def list_variable_callback(ctx, param, value):
     if value:

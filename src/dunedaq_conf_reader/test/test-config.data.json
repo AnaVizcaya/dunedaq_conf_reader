@@ -1,0 +1,4252 @@
+{
+    "DataSelection@HDF5PathParams": {
+        "__type": "HDF5PathParams",
+        "_id": {
+            "$oid": 7595535450642746221
+        },
+        "detector_group_name": "DataSelection",
+        "detector_group_type": "Trigger",
+        "digits_for_element_number": 5,
+        "element_name_prefix": "Element"
+    },
+    "FSMconfiguration_noAction@FSMconfiguration": {
+        "__type": "FSMconfiguration",
+        "_id": {
+            "$oid": 473344210748837404
+        },
+        "actions": [],
+        "command_sequences": [
+            {
+                "$id": 2576543562650845078
+            },
+            {
+                "$id": -1910207124221099940
+            },
+            {
+                "$id": -4481161260096402787
+            }
+        ],
+        "initial_state": "initial",
+        "post_transitions": [],
+        "pre_transitions": [],
+        "states": [
+            "initial",
+            "configured",
+            "ready",
+            "running",
+            "paused",
+            "dataflow_drained",
+            "trigger_sources_stopped",
+            "error"
+        ],
+        "transitions": [
+            {
+                "$id": 6497617804629946962
+            },
+            {
+                "$id": -1525900986749039104
+            },
+            {
+                "$id": -8019565091934597549
+            },
+            {
+                "$id": 2851628157592340254
+            },
+            {
+                "$id": 4700563049939557768
+            },
+            {
+                "$id": -7256638234612913711
+            },
+            {
+                "$id": -8121374763849731486
+            },
+            {
+                "$id": 606640853599910489
+            },
+            {
+                "$id": -4341715533467275151
+            }
+        ]
+    },
+    "HSI@HDF5PathParams": {
+        "__type": "HDF5PathParams",
+        "_id": {
+            "$oid": 2623203473415901841
+        },
+        "detector_group_name": "HSI",
+        "detector_group_type": "HW_Signals_Interface",
+        "digits_for_element_number": 5,
+        "element_name_prefix": "Element"
+    },
+    "HSIEvents@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -8769705186626815005
+        },
+        "eth_device_name": "eno1",
+        "path": "",
+        "port": 0,
+        "protocol": "tcp"
+    },
+    "NDLArPDS@HDF5PathParams": {
+        "__type": "HDF5PathParams",
+        "_id": {
+            "$oid": -4113138760674316197
+        },
+        "detector_group_name": "NDLArPDS",
+        "detector_group_type": "Detector_Readout",
+        "digits_for_element_number": 5,
+        "element_name_prefix": "Element"
+    },
+    "NDLarTPC@HDF5PathParams": {
+        "__type": "HDF5PathParams",
+        "_id": {
+            "$oid": 1317586978522812819
+        },
+        "detector_group_name": "NDLArTPC",
+        "detector_group_type": "Detector_Readout",
+        "digits_for_element_number": 5,
+        "element_name_prefix": "Element"
+    },
+    "PDS@HDF5PathParams": {
+        "__type": "HDF5PathParams",
+        "_id": {
+            "$oid": 1371599960600263198
+        },
+        "detector_group_name": "PDS",
+        "detector_group_type": "Detector_Readout",
+        "digits_for_element_number": 5,
+        "element_name_prefix": "Element"
+    },
+    "TPC@HDF5PathParams": {
+        "__type": "HDF5PathParams",
+        "_id": {
+            "$oid": -2927023159466274506
+        },
+        "detector_group_name": "TPC",
+        "detector_group_type": "Detector_Readout",
+        "digits_for_element_number": 5,
+        "element_name_prefix": "Link"
+    },
+    "aggregator-step@DaqModulesGroupByType": {
+        "__type": "DaqModulesGroupByType",
+        "_id": {
+            "$oid": 4909210405199662772
+        },
+        "modules": [
+            "FragmentAggregatorModule"
+        ]
+    },
+    "apa1_sender_rset@ResourceSetAND": {
+        "__type": "ResourceSetAND",
+        "_id": {
+            "$oid": -8614611437256599775
+        },
+        "contains": [
+            {
+                "$id": -4443782160127480029
+            }
+        ]
+    },
+    "apa2_sender_rset@ResourceSetAND": {
+        "__type": "ResourceSetAND",
+        "_id": {
+            "$oid": 4360855579069583193
+        },
+        "contains": [
+            {
+                "$id": -6121536797194573901
+            }
+        ]
+    },
+    "broadcaster-root@RCBroadcaster": {
+        "__type": "RCBroadcaster",
+        "_id": {
+            "$oid": -344168136692866588
+        },
+        "address": "monkafka.cern.ch:30092",
+        "publish_timeout": 2,
+        "type": "kafka"
+    },
+    "cern-opmon-uri@OpMonURI": {
+        "__type": "OpMonURI",
+        "_id": {
+            "$oid": 574833652684838521
+        },
+        "path": "monkafka.cern.ch:30092/opmon_stream",
+        "type": "stream"
+    },
+    "change_rate@FSMtransition": {
+        "__type": "FSMtransition",
+        "_id": {
+            "$oid": -4341715533467275151
+        },
+        "dest": "",
+        "source": "ready|running"
+    },
+    "conf@FSMCommand": {
+        "__type": "FSMCommand",
+        "_id": {
+            "$oid": -5680776608571243624
+        },
+        "cmd": "conf",
+        "optional": true
+    },
+    "conf@FSMtransition": {
+        "__type": "FSMtransition",
+        "_id": {
+            "$oid": 6497617804629946962
+        },
+        "dest": "configured",
+        "source": "initial"
+    },
+    "conn_apa1@DetectorToDaqConnection": {
+        "__type": "DetectorToDaqConnection",
+        "_id": {
+            "$oid": -2058096636311291259
+        },
+        "contains": [
+            {
+                "$id": 7525265180028893613
+            },
+            {
+                "$id": -8614611437256599775
+            }
+        ]
+    },
+    "conn_apa2@DetectorToDaqConnection": {
+        "__type": "DetectorToDaqConnection",
+        "_id": {
+            "$oid": 6941063521314339788
+        },
+        "contains": [
+            {
+                "$id": 593079159986199680
+            },
+            {
+                "$id": 4360855579069583193
+            }
+        ]
+    },
+    "data-req-hsi-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": 5966149286542559025
+        },
+        "descriptor": {
+            "$id": -5950116808787676891
+        },
+        "endpoint_class": "HSIDataHandlerModule"
+    },
+    "data-req-net-input@NetworkConnectionDescriptor": {
+        "__type": "NetworkConnectionDescriptor",
+        "_id": {
+            "$oid": -5950116808787676891
+        },
+        "associated_service": {
+            "$id": 1606466290674682102
+        },
+        "connection_type": "kSendRecv",
+        "data_type": "DataRequest",
+        "uid_base": "data_requests_for_"
+    },
+    "data-req-queue-desc@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": -1442341891549921154
+        },
+        "capacity": 1000,
+        "data_type": "DataRequest",
+        "queue_type": "kFollySPSCQueue",
+        "uid_base": "internal_data_requests_for_"
+    },
+    "data-req-readout-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": -5429113872966229937
+        },
+        "descriptor": {
+            "$id": -5950116808787676891
+        },
+        "endpoint_class": "FragmentAggregatorModule"
+    },
+    "data-req-trig-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": 1040374772902544034
+        },
+        "descriptor": {
+            "$id": -5950116808787676891
+        },
+        "endpoint_class": "TriggerDataHandlerModule"
+    },
+    "data-source-step@DaqModulesGroupByType": {
+        "__type": "DaqModulesGroupByType",
+        "_id": {
+            "$oid": 6439587989376136740
+        },
+        "modules": [
+            "FDFakeReaderModule"
+        ]
+    },
+    "dataFragments@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -5143674266467228801
+        },
+        "eth_device_name": "eno1",
+        "path": "",
+        "port": 0,
+        "protocol": "tcp"
+    },
+    "dataRequests@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 1606466290674682102
+        },
+        "eth_device_name": "eno1",
+        "path": "",
+        "port": 0,
+        "protocol": "tcp"
+    },
+    "db-run-registry@FSMaction": {
+        "__type": "FSMaction",
+        "_id": {
+            "$oid": -8133011329982735391
+        },
+        "commands": [],
+        "name": "db-run-registry",
+        "parameters": []
+    },
+    "def-data-request-handler@RequestHandler": {
+        "__type": "RequestHandler",
+        "_id": {
+            "$oid": 8435329566918090377
+        },
+        "data_recorder": null,
+        "handler_threads": 2,
+        "periodic_data_transmission_ms": 0,
+        "pop_limit_pct": 0.5,
+        "pop_size_pct": 0.800000011920929,
+        "request_timeout": 10000,
+        "warn_on_empty_buffer": true,
+        "warn_on_timeout": true
+    },
+    "def-emu-nic-receiver-conf@DPDKReaderConf": {
+        "__type": "DPDKReaderConf",
+        "_id": {
+            "$oid": -8455530853709113884
+        },
+        "eal_args": "",
+        "emulation_conf": {
+            "$id": -817244364435400319
+        },
+        "emulation_mode": true,
+        "template_for": "FDFakeReaderModule"
+    },
+    "def-hsi-dts-signal-window@HSISignalWindow": {
+        "__type": "HSISignalWindow",
+        "_id": {
+            "$oid": -2425285271246462518
+        },
+        "signal_type": 128,
+        "tc_type_name": "kTiming",
+        "time_after": 20000,
+        "time_before": 3000
+    },
+    "def-hsi-signal-window@HSISignalWindow": {
+        "__type": "HSISignalWindow",
+        "_id": {
+            "$oid": -9207875798164233043
+        },
+        "signal_type": 1,
+        "tc_type_name": "kTiming",
+        "time_after": 20000,
+        "time_before": 3000
+    },
+    "def-hsi-tc-map@TCReadoutMap": {
+        "__type": "TCReadoutMap",
+        "_id": {
+            "$oid": -4694072007701065552
+        },
+        "tc_type_name": "kTiming",
+        "time_after": 1001,
+        "time_before": 3000
+    },
+    "def-latency-buf@LatencyBuffer": {
+        "__type": "LatencyBuffer",
+        "_id": {
+            "$oid": 6167737844880356132
+        },
+        "alignment_size": 4096,
+        "intrinsic_allocator": false,
+        "numa_aware": false,
+        "numa_node": 1,
+        "preallocation": false,
+        "size": 139008
+    },
+    "def-link-handler@DataHandlerConf": {
+        "__type": "DataHandlerConf",
+        "_id": {
+            "$oid": -225671086524892293
+        },
+        "data_processor": {
+            "$id": -3360252747928182504
+        },
+        "generate_timesync": true,
+        "input_data_type": "WIBEthFrame",
+        "latency_buffer": {
+            "$id": 6167737844880356132
+        },
+        "post_processing_delay_ticks": 0,
+        "request_handler": {
+            "$id": 8435329566918090377
+        },
+        "template_for": "FDDataHandlerModule"
+    },
+    "def-mlt-conf@MLTConf": {
+        "__type": "MLTConf",
+        "_id": {
+            "$oid": 761788317747168257
+        },
+        "latency_monitoring": true,
+        "subdetector_readout_map": [],
+        "template_for": "MLTModule"
+    },
+    "def-nic-receiver-conf@DPDKReaderConf": {
+        "__type": "DPDKReaderConf",
+        "_id": {
+            "$oid": 7627495396624949443
+        },
+        "eal_args": "",
+        "emulation_conf": null,
+        "emulation_mode": false,
+        "template_for": "DPDKReaderModule"
+    },
+    "def-nic-stats@NICStatsConf": {
+        "__type": "NICStatsConf",
+        "_id": {
+            "$oid": 3093911234044067695
+        },
+        "analyze_nth_packet": 1,
+        "expected_packet_size": 7243,
+        "expected_seq_id_step": 1,
+        "expected_timestamp_step": 1000
+    },
+    "def-pds-link-handler@DataHandlerConf": {
+        "__type": "DataHandlerConf",
+        "_id": {
+            "$oid": 886066028624061973
+        },
+        "data_processor": {
+            "$id": -3360252747928182504
+        },
+        "generate_timesync": true,
+        "input_data_type": "PDSFrame",
+        "latency_buffer": {
+            "$id": 6167737844880356132
+        },
+        "post_processing_delay_ticks": 0,
+        "request_handler": {
+            "$id": 8435329566918090377
+        },
+        "template_for": "FDDataHandlerModule"
+    },
+    "def-pds-stream-link-handler@DataHandlerConf": {
+        "__type": "DataHandlerConf",
+        "_id": {
+            "$oid": -3046516783428500065
+        },
+        "data_processor": {
+            "$id": -3360252747928182504
+        },
+        "generate_timesync": true,
+        "input_data_type": "PDSStreamFrame",
+        "latency_buffer": {
+            "$id": 6167737844880356132
+        },
+        "post_processing_delay_ticks": 0,
+        "request_handler": {
+            "$id": 8435329566918090377
+        },
+        "template_for": "FDDataHandlerModule"
+    },
+    "def-random-readout@TCReadoutMap": {
+        "__type": "TCReadoutMap",
+        "_id": {
+            "$oid": 4949889468783170543
+        },
+        "tc_type_name": "kRandom",
+        "time_after": 1001,
+        "time_before": 1000
+    },
+    "def-ta-handler@DataHandlerConf": {
+        "__type": "DataHandlerConf",
+        "_id": {
+            "$oid": 6424865236007928243
+        },
+        "data_processor": {
+            "$id": 4330940058467510696
+        },
+        "generate_timesync": false,
+        "input_data_type": "TriggerActivity",
+        "latency_buffer": {
+            "$id": 6167737844880356132
+        },
+        "post_processing_delay_ticks": 0,
+        "request_handler": {
+            "$id": -3094318416331444408
+        },
+        "template_for": "TriggerDataHandlerModule"
+    },
+    "def-ta-processor@TADataProcessor": {
+        "__type": "TADataProcessor",
+        "_id": {
+            "$oid": 4330940058467510696
+        },
+        "algorithms": [
+            {
+                "$id": -636867566335580642
+            }
+        ],
+        "latency_monitoring": true,
+        "print_ta_info": false,
+        "queue_sizes": 10000,
+        "thread_names_prefix": "proc-"
+    },
+    "def-ta-request-handler@RequestHandler": {
+        "__type": "RequestHandler",
+        "_id": {
+            "$oid": -3094318416331444408
+        },
+        "data_recorder": null,
+        "handler_threads": 1,
+        "periodic_data_transmission_ms": 0,
+        "pop_limit_pct": 0.5,
+        "pop_size_pct": 0.800000011920929,
+        "request_timeout": 0,
+        "warn_on_empty_buffer": false,
+        "warn_on_timeout": false
+    },
+    "def-tc-handler@DataHandlerConf": {
+        "__type": "DataHandlerConf",
+        "_id": {
+            "$oid": -2575096708005188146
+        },
+        "data_processor": {
+            "$id": 4207031229834175295
+        },
+        "generate_timesync": false,
+        "input_data_type": "TriggerCandidate",
+        "latency_buffer": {
+            "$id": 6167737844880356132
+        },
+        "post_processing_delay_ticks": 0,
+        "request_handler": {
+            "$id": -945748261486696924
+        },
+        "template_for": "TriggerDataHandlerModule"
+    },
+    "def-tc-map@TCReadoutMap": {
+        "__type": "TCReadoutMap",
+        "_id": {
+            "$oid": 6839961427721658727
+        },
+        "tc_type_name": "kTiming",
+        "time_after": 1001,
+        "time_before": 3000
+    },
+    "def-tc-processor@TCDataProcessor": {
+        "__type": "TCDataProcessor",
+        "_id": {
+            "$oid": 4207031229834175295
+        },
+        "buffer_timeout": 1,
+        "ignore_overlapping_tcs": false,
+        "ignore_tc": [],
+        "latency_monitoring": true,
+        "mandatory_links": [],
+        "merge_overlapping_tcs": true,
+        "queue_sizes": 10000,
+        "roi_group_conf": [],
+        "tc_readout_map": [
+            {
+                "$id": 6839961427721658727
+            },
+            {
+                "$id": -4694072007701065552
+            }
+        ],
+        "td_out_of_timeout": true,
+        "td_readout_limit": 1000000,
+        "thread_names_prefix": "mlt_",
+        "trigger_bitwords": []
+    },
+    "def-tc-request-handler@RequestHandler": {
+        "__type": "RequestHandler",
+        "_id": {
+            "$oid": -945748261486696924
+        },
+        "data_recorder": null,
+        "handler_threads": 1,
+        "periodic_data_transmission_ms": 0,
+        "pop_limit_pct": 0.5,
+        "pop_size_pct": 0.800000011920929,
+        "request_timeout": 0,
+        "warn_on_empty_buffer": false,
+        "warn_on_timeout": false
+    },
+    "def-tde-link-handler@DataHandlerConf": {
+        "__type": "DataHandlerConf",
+        "_id": {
+            "$oid": -2135433322292166325
+        },
+        "data_processor": {
+            "$id": -3360252747928182504
+        },
+        "generate_timesync": true,
+        "input_data_type": "TDEEthFrame",
+        "latency_buffer": {
+            "$id": 6167737844880356132
+        },
+        "post_processing_delay_ticks": 0,
+        "request_handler": {
+            "$id": 8435329566918090377
+        },
+        "template_for": "FDDataHandlerModule"
+    },
+    "def-tp-handler@DataHandlerConf": {
+        "__type": "DataHandlerConf",
+        "_id": {
+            "$oid": -3293982579500233445
+        },
+        "data_processor": {
+            "$id": 8980007546994294001
+        },
+        "generate_timesync": false,
+        "input_data_type": "TriggerPrimitive",
+        "latency_buffer": {
+            "$id": 6167737844880356132
+        },
+        "post_processing_delay_ticks": 0,
+        "request_handler": {
+            "$id": 7659921984652487039
+        },
+        "template_for": "TriggerDataHandlerModule"
+    },
+    "def-tp-request-handler@RequestHandler": {
+        "__type": "RequestHandler",
+        "_id": {
+            "$oid": 7659921984652487039
+        },
+        "data_recorder": null,
+        "handler_threads": 1,
+        "periodic_data_transmission_ms": 5,
+        "pop_limit_pct": 0.5,
+        "pop_size_pct": 0.800000011920929,
+        "request_timeout": 0,
+        "warn_on_empty_buffer": true,
+        "warn_on_timeout": false
+    },
+    "def-wib-processor@RawDataProcessor": {
+        "__type": "RawDataProcessor",
+        "_id": {
+            "$oid": -3360252747928182504
+        },
+        "channel_map": "PD2HDChannelMap",
+        "channel_mask": [],
+        "latency_monitoring": true,
+        "processing_steps": [
+            {
+                "$id": 7187139309070005254
+            },
+            {
+                "$id": -5300446873161571008
+            }
+        ],
+        "queue_sizes": 10000,
+        "thread_names_prefix": "postproc-"
+    },
+    "default@DataStoreConf": {
+        "__type": "DataStoreConf",
+        "_id": {
+            "$oid": -911552284064035838
+        },
+        "directory_path": ".",
+        "disable_unique_filename_suffix": false,
+        "file_layout_params": {
+            "$id": -5765548574306248501
+        },
+        "filename_params": {
+            "$id": 6948342632017882370
+        },
+        "free_space_safety_factor": 5,
+        "max_file_size": 4294967296,
+        "mode": "all-per-file",
+        "type": "HDF5DataStore"
+    },
+    "default@FilenameParams": {
+        "__type": "FilenameParams",
+        "_id": {
+            "$oid": 6948342632017882370
+        },
+        "digits_for_file_index": 4,
+        "digits_for_run_number": 6,
+        "digits_for_trigger_number": 6,
+        "file_index_prefix": "",
+        "file_type_prefix": "raw",
+        "run_number_prefix": "run",
+        "trigger_number_prefix": ""
+    },
+    "default@HDF5FileLayoutParams": {
+        "__type": "HDF5FileLayoutParams",
+        "_id": {
+            "$oid": -5765548574306248501
+        },
+        "digits_for_record_number": 5,
+        "digits_for_sequence_number": 4,
+        "path_params_list": [
+            {
+                "$id": 7595535450642746221
+            },
+            {
+                "$id": 2623203473415901841
+            },
+            {
+                "$id": -4113138760674316197
+            },
+            {
+                "$id": 1317586978522812819
+            },
+            {
+                "$id": 1371599960600263198
+            },
+            {
+                "$id": -2927023159466274506
+            }
+        ],
+        "raw_data_group_name": "RawData",
+        "record_header_dataset_name": "TriggerRecordHeader",
+        "record_name_prefix": "TriggerRecord",
+        "view_group_name": "Views"
+    },
+    "default_tp_store_conf@DataStoreConf": {
+        "__type": "DataStoreConf",
+        "_id": {
+            "$oid": 6194643324277132459
+        },
+        "directory_path": "./",
+        "disable_unique_filename_suffix": false,
+        "file_layout_params": {
+            "$id": 6073462821024753270
+        },
+        "filename_params": {
+            "$id": 3700926401880904800
+        },
+        "free_space_safety_factor": 5,
+        "max_file_size": 4294967296,
+        "mode": "all-per-file",
+        "type": "HDF5DataStore"
+    },
+    "df-01@DFApplication": {
+        "__type": "DFApplication",
+        "_id": {
+            "$oid": 3658197662692501187
+        },
+        "action_plans": [],
+        "application_environment": [],
+        "application_name": "daq_application",
+        "commandline_parameters": [],
+        "data_writers": [
+            {
+                "$id": 2948004715234478564
+            }
+        ],
+        "exposes_service": [
+            {
+                "$id": 3109362398701104235
+            }
+        ],
+        "log_path": "",
+        "network_rules": [
+            {
+                "$id": -8633084430008952530
+            },
+            {
+                "$id": 3214925496741301385
+            },
+            {
+                "$id": 7640494563911143182
+            },
+            {
+                "$id": 5966149286542559025
+            },
+            {
+                "$id": -5429113872966229937
+            },
+            {
+                "$id": 1040374772902544034
+            }
+        ],
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "queue_rules": [
+            {
+                "$id": -5585229754385296821
+            }
+        ],
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "source_id": {
+            "$id": -3599218512879745221
+        },
+        "trb": {
+            "$id": 7185342472935669564
+        },
+        "uses": {
+            "$id": 1845076806550504220
+        }
+    },
+    "df-01_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 3109362398701104235
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "df-02@DFApplication": {
+        "__type": "DFApplication",
+        "_id": {
+            "$oid": 1916494627471005313
+        },
+        "action_plans": [],
+        "application_environment": [],
+        "application_name": "daq_application",
+        "commandline_parameters": [],
+        "data_writers": [
+            {
+                "$id": 2948004715234478564
+            }
+        ],
+        "exposes_service": [
+            {
+                "$id": -4604874342737916140
+            }
+        ],
+        "log_path": "",
+        "network_rules": [
+            {
+                "$id": -8633084430008952530
+            },
+            {
+                "$id": 3214925496741301385
+            },
+            {
+                "$id": 7640494563911143182
+            },
+            {
+                "$id": 5966149286542559025
+            },
+            {
+                "$id": -5429113872966229937
+            },
+            {
+                "$id": 1040374772902544034
+            }
+        ],
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "queue_rules": [
+            {
+                "$id": -5585229754385296821
+            }
+        ],
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "source_id": {
+            "$id": -8059560873224474778
+        },
+        "trb": {
+            "$id": 7185342472935669564
+        },
+        "uses": {
+            "$id": 1845076806550504220
+        }
+    },
+    "df-02_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -4604874342737916140
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "df-03@DFApplication": {
+        "__type": "DFApplication",
+        "_id": {
+            "$oid": 1514873865576510540
+        },
+        "action_plans": [],
+        "application_environment": [],
+        "application_name": "daq_application",
+        "commandline_parameters": [],
+        "data_writers": [
+            {
+                "$id": 2948004715234478564
+            }
+        ],
+        "exposes_service": [
+            {
+                "$id": -2372564287774042364
+            }
+        ],
+        "log_path": "",
+        "network_rules": [
+            {
+                "$id": -8633084430008952530
+            },
+            {
+                "$id": 3214925496741301385
+            },
+            {
+                "$id": 7640494563911143182
+            },
+            {
+                "$id": 5966149286542559025
+            },
+            {
+                "$id": -5429113872966229937
+            },
+            {
+                "$id": 1040374772902544034
+            }
+        ],
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "queue_rules": [
+            {
+                "$id": -5585229754385296821
+            }
+        ],
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "source_id": {
+            "$id": 6082595939846412942
+        },
+        "trb": {
+            "$id": 7185342472935669564
+        },
+        "uses": {
+            "$id": 1845076806550504220
+        }
+    },
+    "df-03_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -2372564287774042364
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "df-controller@RCApplication": {
+        "__type": "RCApplication",
+        "_id": {
+            "$oid": -8457491393901849387
+        },
+        "application_environment": [],
+        "application_name": "drunc-controller",
+        "broadcaster": null,
+        "commandline_parameters": [],
+        "exposes_service": [
+            {
+                "$id": -349476137700369353
+            }
+        ],
+        "fsm": {
+            "$id": 473344210748837404
+        },
+        "log_path": "",
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "runs_on": {
+            "$id": 4346286162781865311
+        }
+    },
+    "df-controller_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -349476137700369353
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "grpc"
+    },
+    "df-segment@Segment": {
+        "__type": "Segment",
+        "_id": {
+            "$oid": 7064124908167720692
+        },
+        "applications": [
+            {
+                "$id": 4651745927753204316
+            },
+            {
+                "$id": -5291581234174541454
+            },
+            {
+                "$id": 3658197662692501187
+            },
+            {
+                "$id": 1916494627471005313
+            },
+            {
+                "$id": 1514873865576510540
+            }
+        ],
+        "controller": {
+            "$id": -8457491393901849387
+        },
+        "segments": []
+    },
+    "df-token-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": 7640494563911143182
+        },
+        "descriptor": {
+            "$id": 4991672888010836196
+        },
+        "endpoint_class": "DFOModule"
+    },
+    "df-tokens@NetworkConnectionDescriptor": {
+        "__type": "NetworkConnectionDescriptor",
+        "_id": {
+            "$oid": 4991672888010836196
+        },
+        "associated_service": {
+            "$id": 2059971001686655849
+        },
+        "connection_type": "kSendRecv",
+        "data_type": "TriggerDecisionToken",
+        "uid_base": "dataflow_token"
+    },
+    "dfTokens@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 2059971001686655849
+        },
+        "eth_device_name": "eno1",
+        "path": "",
+        "port": 0,
+        "protocol": "tcp"
+    },
+    "dfhw-01@DFHWConf": {
+        "__type": "DFHWConf",
+        "_id": {
+            "$oid": 1845076806550504220
+        },
+        "uses": [
+            {
+                "$id": 6712134715749558022
+            }
+        ]
+    },
+    "dfo-01@DFOApplication": {
+        "__type": "DFOApplication",
+        "_id": {
+            "$oid": -5291581234174541454
+        },
+        "action_plans": [],
+        "application_environment": [],
+        "application_name": "daq_application",
+        "commandline_parameters": [],
+        "dfo": {
+            "$id": 6113917197040202063
+        },
+        "exposes_service": [
+            {
+                "$id": -3579281549025017503
+            }
+        ],
+        "log_path": "",
+        "network_rules": [
+            {
+                "$id": -772678658706775848
+            },
+            {
+                "$id": 6218339644490441235
+            },
+            {
+                "$id": 7640494563911143182
+            }
+        ],
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "queue_rules": [],
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "source_id": null
+    },
+    "dfo-01_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -3579281549025017503
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "dfoconf-01@DFOConf": {
+        "__type": "DFOConf",
+        "_id": {
+            "$oid": 6113917197040202063
+        },
+        "busy_threshold": 2,
+        "free_threshold": 1,
+        "general_queue_timeout_ms": 100,
+        "stop_timeout_ms": 100,
+        "td_send_retries": 5
+    },
+    "disable_triggers@FSMCommand": {
+        "__type": "FSMCommand",
+        "_id": {
+            "$oid": 6318898671177525447
+        },
+        "cmd": "disable_triggers",
+        "optional": true
+    },
+    "disable_triggers@FSMtransition": {
+        "__type": "FSMtransition",
+        "_id": {
+            "$oid": 2851628157592340254
+        },
+        "dest": "ready",
+        "source": "running"
+    },
+    "dlh-step@DaqModulesGroupByType": {
+        "__type": "DaqModulesGroupByType",
+        "_id": {
+            "$oid": -3013368504576371143
+        },
+        "modules": [
+            "FDDataHandlerModule"
+        ]
+    },
+    "dpdk_e810_conf@DPDKPortConfiguration": {
+        "__type": "DPDKPortConfiguration",
+        "_id": {
+            "$oid": 4083516005950012203
+        },
+        "burst_size": 2048,
+        "flow_control": true,
+        "lcore_sleep_us": 10,
+        "mbuf_cache_size": 0,
+        "mtu": 9000,
+        "num_bufs": 16384,
+        "promiscuous_mode": false,
+        "rx_ring_size": 4096,
+        "source_to_rx_queue_multiplexing": 1,
+        "tx_ring_size": 1024,
+        "used_lcores": [
+            {
+                "$id": 9110976161599344164
+            }
+        ]
+    },
+    "drain_dataflow@FSMCommand": {
+        "__type": "FSMCommand",
+        "_id": {
+            "$oid": 2641512989273931297
+        },
+        "cmd": "drain_dataflow",
+        "optional": false
+    },
+    "drain_dataflow@FSMtransition": {
+        "__type": "FSMtransition",
+        "_id": {
+            "$oid": 4700563049939557768
+        },
+        "dest": "dataflow_drained",
+        "source": "ready"
+    },
+    "dummy-detector@DetectorConfig": {
+        "__type": "DetectorConfig",
+        "_id": {
+            "$oid": 5381089525416540646
+        },
+        "clock_speed_hz": 62500000,
+        "offline_data_stream": "cosmics",
+        "op_env": "test",
+        "tpg_channel_map": "PD2HDChannelMap"
+    },
+    "dummy-ta-maker@TAMakerPrescaleAlgorithm": {
+        "__type": "TAMakerPrescaleAlgorithm",
+        "_id": {
+            "$oid": -3054464924013122575
+        },
+        "max_time_over_threshold": 10000,
+        "prescale": 1000
+    },
+    "dw-01@DataWriterConf": {
+        "__type": "DataWriterConf",
+        "_id": {
+            "$oid": 2948004715234478564
+        },
+        "data_storage_prescale": 1,
+        "data_store_params": {
+            "$id": -911552284064035838
+        },
+        "max_write_retry_time_ms": 1000,
+        "min_write_retry_time_ms": 1,
+        "write_retry_time_increase_factor": 2
+    },
+    "ehn1-connectivity-service-config@ConnectivityService": {
+        "__type": "ConnectivityService",
+        "_id": {
+            "$oid": -6601341410010860170
+        },
+        "host": "np04-srv-017",
+        "interval_ms": 2000,
+        "service": {
+            "$id": -3301812637484024711
+        }
+    },
+    "ehn1-connectivity-service@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -3301812637484024711
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 30005,
+        "protocol": "http"
+    },
+    "ehn1-env-connectivity-port@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": -5962758168952015698
+        },
+        "description": "",
+        "name": "CONNECTION_PORT",
+        "value": "30005"
+    },
+    "ehn1-env-connectivity-server@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": 7414751411457604006
+        },
+        "description": "",
+        "name": "CONNECTION_SERVER",
+        "value": "np04-srv-017"
+    },
+    "ehn1-env-ers-error@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": -3610157568299344042
+        },
+        "description": "",
+        "name": "DUNEDAQ_ERS_ERROR",
+        "value": "erstrace,throttle,lstdout,protobufstream(monkafka.cern.ch:30092)"
+    },
+    "ehn1-env-ers-fatal@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": 7773893541246181375
+        },
+        "description": "",
+        "name": "DUNEDAQ_ERS_FATAL",
+        "value": "erstrace,lstdout,protobufstream(monkafka.cern.ch:30092)"
+    },
+    "ehn1-env-ers-info@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": -7584140433785782813
+        },
+        "description": "",
+        "name": "DUNEDAQ_ERS_INFO",
+        "value": "erstrace,throttle,lstdout,protobufstream(monkafka.cern.ch:30092)"
+    },
+    "ehn1-env-ers-stream-libs@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": 1118442901715696347
+        },
+        "description": "List of extra ERS streaming libs",
+        "name": "DUNEDAQ_ERS_STREAM_LIBS",
+        "value": "erskafka"
+    },
+    "ehn1-env-ers-verb@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": -5358378602043468146
+        },
+        "description": "",
+        "name": "DUNEDAQ_ERS_VERBOSITY_LEVEL",
+        "value": "1"
+    },
+    "ehn1-env-ers-warning@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": 9152427350793462170
+        },
+        "description": "",
+        "name": "DUNEDAQ_ERS_WARNING",
+        "value": "erstrace,throttle,lstdout,protobufstream(monkafka.cern.ch:30092)"
+    },
+    "ehn1-variables@VariableSet": {
+        "__type": "VariableSet",
+        "_id": {
+            "$oid": -7989290547150659941
+        },
+        "contains": [
+            {
+                "$id": -3610157568299344042
+            },
+            {
+                "$id": 7773893541246181375
+            },
+            {
+                "$id": -7584140433785782813
+            },
+            {
+                "$id": 1118442901715696347
+            },
+            {
+                "$id": -5358378602043468146
+            },
+            {
+                "$id": 9152427350793462170
+            }
+        ],
+        "description": ""
+    },
+    "elisa-logbook@FSMaction": {
+        "__type": "FSMaction",
+        "_id": {
+            "$oid": 1764833892781206775
+        },
+        "commands": [],
+        "name": "elisa-logbook",
+        "parameters": []
+    },
+    "enable_triggers@FSMCommand": {
+        "__type": "FSMCommand",
+        "_id": {
+            "$oid": 7342998652964997475
+        },
+        "cmd": "enable_triggers",
+        "optional": false
+    },
+    "enable_triggers@FSMtransition": {
+        "__type": "FSMtransition",
+        "_id": {
+            "$oid": -8019565091934597549
+        },
+        "dest": "running",
+        "source": "ready"
+    },
+    "fa-input@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": -3533059210615265728
+        },
+        "capacity": 1000,
+        "data_type": "Fragment",
+        "queue_type": "kFollyMPMCQueue",
+        "uid_base": "internal_fragments_"
+    },
+    "fa-queue-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": -8693529251217621888
+        },
+        "descriptor": {
+            "$id": -3533059210615265728
+        },
+        "destination_class": "FragmentAggregatorModule"
+    },
+    "fakehsi@FakeHSIEventGeneratorConf": {
+        "__type": "FakeHSIEventGeneratorConf",
+        "_id": {
+            "$oid": -7697267135025847187
+        },
+        "enabled_signals": 1,
+        "hsi_device_id": 1,
+        "mean_signal_multiplicity": 1,
+        "signal_emulation_mode": 0,
+        "timestamp_offset": 0,
+        "trigger_rate": 3.0
+    },
+    "fast-all-monitoring@OpMonConf": {
+        "__type": "OpMonConf",
+        "_id": {
+            "$oid": 5280336434491485847
+        },
+        "interval_s": 2,
+        "level": 4294967295
+    },
+    "fd-dlh-data-requests-queue-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": -3294723483688369800
+        },
+        "descriptor": {
+            "$id": -1442341891549921154
+        },
+        "destination_class": "FDDataHandlerModule"
+    },
+    "file-logbook-file-name@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": -2404872776537856188
+        },
+        "description": "",
+        "name": "file_name",
+        "value": "logbook.txt"
+    },
+    "file-logbook@FSMaction": {
+        "__type": "FSMaction",
+        "_id": {
+            "$oid": -6266187111492830675
+        },
+        "commands": [],
+        "name": "file-logbook",
+        "parameters": [
+            {
+                "$id": -2404872776537856188
+            }
+        ]
+    },
+    "file-run-registry@FSMaction": {
+        "__type": "FSMaction",
+        "_id": {
+            "$oid": -2319365547615918013
+        },
+        "commands": [],
+        "name": "file-run-registry",
+        "parameters": []
+    },
+    "fpdm-data-requests-queue-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": 5387320193359250574
+        },
+        "descriptor": {
+            "$id": -1442341891549921154
+        },
+        "destination_class": "FakeDataProdModule"
+    },
+    "frag-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": 3214925496741301385
+        },
+        "descriptor": {
+            "$id": 4872713083512091813
+        },
+        "endpoint_class": "TRBModule"
+    },
+    "fragments@NetworkConnectionDescriptor": {
+        "__type": "NetworkConnectionDescriptor",
+        "_id": {
+            "$oid": 4872713083512091813
+        },
+        "associated_service": {
+            "$id": -5143674266467228801
+        },
+        "connection_type": "kSendRecv",
+        "data_type": "Fragment",
+        "uid_base": "fragments_"
+    },
+    "fsmConf-prod@FSMconfiguration": {
+        "__type": "FSMconfiguration",
+        "_id": {
+            "$oid": 3655688271607746446
+        },
+        "actions": [
+            {
+                "$id": -7909335104541007656
+            },
+            {
+                "$id": 103338135377328037
+            },
+            {
+                "$id": -6266187111492830675
+            },
+            {
+                "$id": 1764833892781206775
+            },
+            {
+                "$id": -8133011329982735391
+            }
+        ],
+        "command_sequences": [
+            {
+                "$id": 2576543562650845078
+            },
+            {
+                "$id": -1910207124221099940
+            },
+            {
+                "$id": -4481161260096402787
+            }
+        ],
+        "initial_state": "initial",
+        "post_transitions": [
+            {
+                "$id": -2138161236502619084
+            },
+            {
+                "$id": 1657570583287824202
+            }
+        ],
+        "pre_transitions": [
+            {
+                "$id": -2499156249509816846
+            },
+            {
+                "$id": 1902907358663671460
+            }
+        ],
+        "states": [
+            "initial",
+            "configured",
+            "ready",
+            "running",
+            "paused",
+            "dataflow_drained",
+            "trigger_sources_stopped",
+            "error"
+        ],
+        "transitions": [
+            {
+                "$id": 6497617804629946962
+            },
+            {
+                "$id": -1525900986749039104
+            },
+            {
+                "$id": -8019565091934597549
+            },
+            {
+                "$id": 2851628157592340254
+            },
+            {
+                "$id": 4700563049939557768
+            },
+            {
+                "$id": -7256638234612913711
+            },
+            {
+                "$id": -8121374763849731486
+            },
+            {
+                "$id": 606640853599910489
+            },
+            {
+                "$id": -4341715533467275151
+            }
+        ]
+    },
+    "fsmConf-test@FSMconfiguration": {
+        "__type": "FSMconfiguration",
+        "_id": {
+            "$oid": 1317542122831399537
+        },
+        "actions": [
+            {
+                "$id": 5978243986255443821
+            },
+            {
+                "$id": 103338135377328037
+            },
+            {
+                "$id": -6266187111492830675
+            },
+            {
+                "$id": -2319365547615918013
+            }
+        ],
+        "command_sequences": [
+            {
+                "$id": 2576543562650845078
+            },
+            {
+                "$id": -1910207124221099940
+            },
+            {
+                "$id": -4481161260096402787
+            }
+        ],
+        "initial_state": "initial",
+        "post_transitions": [
+            {
+                "$id": 7134958512980624492
+            },
+            {
+                "$id": 1364641955194690076
+            }
+        ],
+        "pre_transitions": [
+            {
+                "$id": -2499156249509816846
+            },
+            {
+                "$id": 7817369526704755530
+            }
+        ],
+        "states": [
+            "initial",
+            "configured",
+            "ready",
+            "running",
+            "paused",
+            "dataflow_drained",
+            "trigger_sources_stopped",
+            "error"
+        ],
+        "transitions": [
+            {
+                "$id": 6497617804629946962
+            },
+            {
+                "$id": -1525900986749039104
+            },
+            {
+                "$id": -8019565091934597549
+            },
+            {
+                "$id": 2851628157592340254
+            },
+            {
+                "$id": 4700563049939557768
+            },
+            {
+                "$id": -7256638234612913711
+            },
+            {
+                "$id": -8121374763849731486
+            },
+            {
+                "$id": 606640853599910489
+            },
+            {
+                "$id": -4341715533467275151
+            }
+        ]
+    },
+    "g_3_1_1_0@GeoId": {
+        "__type": "GeoId",
+        "_id": {
+            "$oid": 5846255125036462598
+        },
+        "crate_id": 1,
+        "detector_id": 3,
+        "slot_id": 1,
+        "stream_id": 0
+    },
+    "g_3_1_1_1@GeoId": {
+        "__type": "GeoId",
+        "_id": {
+            "$oid": 1247353124457002920
+        },
+        "crate_id": 1,
+        "detector_id": 3,
+        "slot_id": 1,
+        "stream_id": 1
+    },
+    "g_3_1_1_2@GeoId": {
+        "__type": "GeoId",
+        "_id": {
+            "$oid": 5877364727313937976
+        },
+        "crate_id": 1,
+        "detector_id": 3,
+        "slot_id": 1,
+        "stream_id": 2
+    },
+    "g_3_1_1_3@GeoId": {
+        "__type": "GeoId",
+        "_id": {
+            "$oid": -7691691333827572232
+        },
+        "crate_id": 1,
+        "detector_id": 3,
+        "slot_id": 1,
+        "stream_id": 3
+    },
+    "g_3_2_1_0@GeoId": {
+        "__type": "GeoId",
+        "_id": {
+            "$oid": -6380942424441616430
+        },
+        "crate_id": 2,
+        "detector_id": 3,
+        "slot_id": 1,
+        "stream_id": 0
+    },
+    "g_3_2_1_1@GeoId": {
+        "__type": "GeoId",
+        "_id": {
+            "$oid": 7943062991877657156
+        },
+        "crate_id": 2,
+        "detector_id": 3,
+        "slot_id": 1,
+        "stream_id": 1
+    },
+    "g_3_2_1_2@GeoId": {
+        "__type": "GeoId",
+        "_id": {
+            "$oid": -9032809244285987431
+        },
+        "crate_id": 2,
+        "detector_id": 3,
+        "slot_id": 1,
+        "stream_id": 2
+    },
+    "g_3_2_1_3@GeoId": {
+        "__type": "GeoId",
+        "_id": {
+            "$oid": -1874308459592409000
+        },
+        "crate_id": 2,
+        "detector_id": 3,
+        "slot_id": 1,
+        "stream_id": 3
+    },
+    "hsi-dlh-data-requests-queue-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": 5051330030226661752
+        },
+        "descriptor": {
+            "$id": 6803672412710049956
+        },
+        "destination_class": "HSIDataHandlerModule"
+    },
+    "hsi-fake-01@FakeHSIApplication": {
+        "__type": "FakeHSIApplication",
+        "_id": {
+            "$oid": 8875747225017740789
+        },
+        "action_plans": [],
+        "application_environment": [],
+        "application_name": "daq_application",
+        "commandline_parameters": [],
+        "exposes_service": [
+            {
+                "$id": -6719290188082568070
+            }
+        ],
+        "generator": {
+            "$id": -7697267135025847187
+        },
+        "link_handler": {
+            "$id": 5672840145902971904
+        },
+        "log_path": "",
+        "network_rules": [
+            {
+                "$id": -8078895864654264494
+            },
+            {
+                "$id": 5966149286542559025
+            },
+            {
+                "$id": -4848690142302382666
+            }
+        ],
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "queue_rules": [
+            {
+                "$id": 5051330030226661752
+            }
+        ],
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "source_id": null
+    },
+    "hsi-fake-01_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -6719290188082568070
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "hsi-fake-controller@RCApplication": {
+        "__type": "RCApplication",
+        "_id": {
+            "$oid": -6452364851063417889
+        },
+        "application_environment": [],
+        "application_name": "drunc-controller",
+        "broadcaster": null,
+        "commandline_parameters": [],
+        "exposes_service": [
+            {
+                "$id": 6300820889448343249
+            }
+        ],
+        "fsm": {
+            "$id": 473344210748837404
+        },
+        "log_path": "",
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "runs_on": {
+            "$id": 4346286162781865311
+        }
+    },
+    "hsi-fake-controller_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 6300820889448343249
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "grpc"
+    },
+    "hsi-fake-handler@DataHandlerConf": {
+        "__type": "DataHandlerConf",
+        "_id": {
+            "$oid": 5672840145902971904
+        },
+        "data_processor": {
+            "$id": -397032838562758409
+        },
+        "generate_timesync": false,
+        "input_data_type": "HSIFrame",
+        "latency_buffer": {
+            "$id": -679779735430943474
+        },
+        "post_processing_delay_ticks": 0,
+        "request_handler": {
+            "$id": -7476909893706805297
+        },
+        "template_for": "HSIDataHandlerModule"
+    },
+    "hsi-fake-latencybuffer@LatencyBuffer": {
+        "__type": "LatencyBuffer",
+        "_id": {
+            "$oid": -679779735430943474
+        },
+        "alignment_size": 0,
+        "intrinsic_allocator": false,
+        "numa_aware": false,
+        "numa_node": 0,
+        "preallocation": false,
+        "size": 100000
+    },
+    "hsi-fake-processor@HSIFrameProcessor": {
+        "__type": "HSIFrameProcessor",
+        "_id": {
+            "$oid": -397032838562758409
+        },
+        "latency_monitoring": true,
+        "queue_sizes": 10000,
+        "thread_names_prefix": "hsip"
+    },
+    "hsi-fake-requesthandler@RequestHandler": {
+        "__type": "RequestHandler",
+        "_id": {
+            "$oid": -7476909893706805297
+        },
+        "data_recorder": null,
+        "handler_threads": 4,
+        "periodic_data_transmission_ms": 0,
+        "pop_limit_pct": 0.800000011920929,
+        "pop_size_pct": 0.10000000149011612,
+        "request_timeout": 0,
+        "warn_on_empty_buffer": false,
+        "warn_on_timeout": false
+    },
+    "hsi-fake-segment@Segment": {
+        "__type": "Segment",
+        "_id": {
+            "$oid": 1131511831532890456
+        },
+        "applications": [
+            {
+                "$id": 8875747225017740789
+            },
+            {
+                "$id": 3725337533438351604
+            }
+        ],
+        "controller": {
+            "$id": -6452364851063417889
+        },
+        "segments": []
+    },
+    "hsi-fake-tc-srcid-1@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": -4975400028661023642
+        },
+        "sid": 2,
+        "subsystem": "Trigger"
+    },
+    "hsi-fake-to-tc-app@HSIEventToTCApplication": {
+        "__type": "HSIEventToTCApplication",
+        "_id": {
+            "$oid": 3725337533438351604
+        },
+        "action_plans": [],
+        "application_environment": [],
+        "application_name": "daq_application",
+        "commandline_parameters": [],
+        "exposes_service": [
+            {
+                "$id": 1606466290674682102
+            },
+            {
+                "$id": -8769705186626815005
+            },
+            {
+                "$id": -3132802424268430808
+            }
+        ],
+        "hsevent_to_tc_conf": {
+            "$id": 2911884329297182683
+        },
+        "log_path": "",
+        "network_rules": [
+            {
+                "$id": -8078895864654264494
+            },
+            {
+                "$id": 3078976656026163793
+            }
+        ],
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "queue_rules": [],
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "source_id": {
+            "$id": -4975400028661023642
+        }
+    },
+    "hsi-fake-to-tc-app_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -3132802424268430808
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "hsi-publisher@NetworkConnectionDescriptor": {
+        "__type": "NetworkConnectionDescriptor",
+        "_id": {
+            "$oid": -639691891901790774
+        },
+        "associated_service": {
+            "$id": -8769705186626815005
+        },
+        "connection_type": "kPubSub",
+        "data_type": "HSIEvent",
+        "uid_base": "hsi_event"
+    },
+    "hsi-raw-input@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": 6803672412710049956
+        },
+        "capacity": 100000,
+        "data_type": "HSIFrame",
+        "queue_type": "kFollySPSCQueue",
+        "uid_base": "hsi_link_"
+    },
+    "hsi-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": -8078895864654264494
+        },
+        "descriptor": {
+            "$id": -639691891901790774
+        },
+        "endpoint_class": "DataSubscriberModule"
+    },
+    "hsi-to-tc-conf@HSI2TCTranslatorConf": {
+        "__type": "HSI2TCTranslatorConf",
+        "_id": {
+            "$oid": 2911884329297182683
+        },
+        "emulation_conf": null,
+        "emulation_mode": false,
+        "latency_monitoring": true,
+        "prescale": 1,
+        "signals": [
+            {
+                "$id": -9207875798164233043
+            },
+            {
+                "$id": -2425285271246462518
+            }
+        ],
+        "template_for": "DataReaderModule"
+    },
+    "kafka-cern-vhost@VirtualHost": {
+        "__type": "VirtualHost",
+        "_id": {
+            "$oid": 8935893579957705980
+        },
+        "runs_on": {
+            "$id": -8157478920786862242
+        },
+        "uses": [
+            {
+                "$id": 9110976161599344164
+            }
+        ]
+    },
+    "kafka-pocket-vhost@VirtualHost": {
+        "__type": "VirtualHost",
+        "_id": {
+            "$oid": 3464165524270901381
+        },
+        "runs_on": {
+            "$id": 3218600020328810652
+        },
+        "uses": [
+            {
+                "$id": 9110976161599344164
+            }
+        ]
+    },
+    "local-connection-server@ConnectionService": {
+        "__type": "ConnectionService",
+        "_id": {
+            "$oid": -9188823128986750199
+        },
+        "application_environment": [],
+        "application_name": "echo",
+        "commandline_parameters": [
+            "Process PID $$;",
+            "trap 'pkill -INT -P $$' EXIT;",
+            "gunicorn -b 0.0.0.0:5000 --workers=1 --worker-class=gthread --threads=2 --timeout 5000000000 --log-level=info connection-service.connection-flask:app"
+        ],
+        "exposes_service": [
+            {
+                "$id": 3360510503308465956
+            }
+        ],
+        "log_path": "",
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "threads": 1
+    },
+    "local-connectivity-service-config@ConnectivityService": {
+        "__type": "ConnectivityService",
+        "_id": {
+            "$oid": -5661187337610562539
+        },
+        "host": "localhost",
+        "interval_ms": 2000,
+        "service": {
+            "$id": 3360510503308465956
+        }
+    },
+    "local-connectivity-service@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 3360510503308465956
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 5000,
+        "protocol": "http"
+    },
+    "local-env-ers-error@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": 7289679455417699300
+        },
+        "description": "",
+        "name": "DUNEDAQ_ERS_ERROR",
+        "value": "erstrace,throttle,lstdout"
+    },
+    "local-env-ers-fatal@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": 7729533115722666460
+        },
+        "description": "",
+        "name": "DUNEDAQ_ERS_FATAL",
+        "value": "erstrace,lstdout"
+    },
+    "local-env-ers-info@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": -3250257309349503741
+        },
+        "description": "",
+        "name": "DUNEDAQ_ERS_INFO",
+        "value": "erstrace,throttle,lstdout"
+    },
+    "local-env-ers-verb@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": 1647900875298340266
+        },
+        "description": "",
+        "name": "DUNEDAQ_ERS_VERBOSITY_LEVEL",
+        "value": "1"
+    },
+    "local-env-ers-warning@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": -5494444439700681392
+        },
+        "description": "",
+        "name": "DUNEDAQ_ERS_WARNING",
+        "value": "erstrace,throttle,lstdout"
+    },
+    "local-opmon-uri@OpMonURI": {
+        "__type": "OpMonURI",
+        "_id": {
+            "$oid": 5970592136078462897
+        },
+        "path": "./info.json",
+        "type": "file"
+    },
+    "local-variables@VariableSet": {
+        "__type": "VariableSet",
+        "_id": {
+            "$oid": 2568333768626173691
+        },
+        "contains": [
+            {
+                "$id": 7289679455417699300
+            },
+            {
+                "$id": 7729533115722666460
+            },
+            {
+                "$id": -3250257309349503741
+            },
+            {
+                "$id": 1647900875298340266
+            },
+            {
+                "$id": -5494444439700681392
+            }
+        ],
+        "description": ""
+    },
+    "localhost@PhysicalHost": {
+        "__type": "PhysicalHost",
+        "_id": {
+            "$oid": 3441322135966783919
+        },
+        "contains": [
+            {
+                "$id": 9110976161599344164
+            }
+        ]
+    },
+    "localhost_cpus@ProcessingResource": {
+        "__type": "ProcessingResource",
+        "_id": {
+            "$oid": 9110976161599344164
+        },
+        "cpu_cores": [
+            0,
+            1,
+            2,
+            3
+        ],
+        "numa_id": 0
+    },
+    "mlt@MLTApplication": {
+        "__type": "MLTApplication",
+        "_id": {
+            "$oid": -9137437907240927654
+        },
+        "action_plans": [],
+        "application_environment": [],
+        "application_name": "daq_application",
+        "commandline_parameters": [],
+        "contains": [],
+        "data_subscriber": {
+            "$id": -7997909948421055993
+        },
+        "exposes_service": [
+            {
+                "$id": 607341850563023952
+            },
+            {
+                "$id": -4929193354507273179
+            },
+            {
+                "$id": 1606466290674682102
+            },
+            {
+                "$id": 1780037698511667077
+            }
+        ],
+        "log_path": "",
+        "mlt_conf": {
+            "$id": 761788317747168257
+        },
+        "network_rules": [
+            {
+                "$id": 3078976656026163793
+            },
+            {
+                "$id": 6218339644490441235
+            },
+            {
+                "$id": -772678658706775848
+            },
+            {
+                "$id": 1040374772902544034
+            },
+            {
+                "$id": 5871934481178249471
+            }
+        ],
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "queue_rules": [
+            {
+                "$id": 4521867320197184818
+            },
+            {
+                "$id": -6835309104649921566
+            }
+        ],
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "source_id": {
+            "$id": -4760337062940450222
+        },
+        "standalone_candidate_maker_confs": [
+            {
+                "$id": -5045688576256015497
+            }
+        ],
+        "trigger_inputs_handler": {
+            "$id": -2575096708005188146
+        },
+        "tx_generation_disabled": false
+    },
+    "mlt_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 1780037698511667077
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "monkafka.cern.ch@PhysicalHost": {
+        "__type": "PhysicalHost",
+        "_id": {
+            "$oid": -8157478920786862242
+        },
+        "contains": [
+            {
+                "$id": 9110976161599344164
+            }
+        ]
+    },
+    "pds-raw-data-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": -772042813524034978
+        },
+        "descriptor": {
+            "$id": -7115175288660935698
+        },
+        "destination_class": "FDDataHandlerModule"
+    },
+    "pds-raw-input@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": -7115175288660935698
+        },
+        "capacity": 10000,
+        "data_type": "PDSFrame",
+        "queue_type": "kFollySPSCQueue",
+        "uid_base": "raw_input_"
+    },
+    "pds-stream-raw-data-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": -6867992047956371534
+        },
+        "descriptor": {
+            "$id": -8624895648636895210
+        },
+        "destination_class": "FDDataHandlerModule"
+    },
+    "pds-stream-raw-input@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": -8624895648636895210
+        },
+        "capacity": 10000,
+        "data_type": "PDSStreamFrame",
+        "queue_type": "kFollySPSCQueue",
+        "uid_base": "raw_input_"
+    },
+    "pocket-host@PhysicalHost": {
+        "__type": "PhysicalHost",
+        "_id": {
+            "$oid": 3218600020328810652
+        },
+        "contains": [
+            {
+                "$id": 9110976161599344164
+            }
+        ]
+    },
+    "post_drain_dataflow_prod@FSMxTransition": {
+        "__type": "FSMxTransition",
+        "_id": {
+            "$oid": 1657570583287824202
+        },
+        "mandatory": [],
+        "order": [
+            "db-run-registry",
+            "file-logbook",
+            "elisa-logbook"
+        ],
+        "transition": "drain_dataflow"
+    },
+    "post_drain_dataflow_test@FSMxTransition": {
+        "__type": "FSMxTransition",
+        "_id": {
+            "$oid": 1364641955194690076
+        },
+        "mandatory": [],
+        "order": [
+            "file-logbook"
+        ],
+        "transition": "drain_dataflow"
+    },
+    "post_start_prod@FSMxTransition": {
+        "__type": "FSMxTransition",
+        "_id": {
+            "$oid": -2138161236502619084
+        },
+        "mandatory": [
+            "elisa-logbook"
+        ],
+        "order": [
+            "file-logbook",
+            "elisa-logbook"
+        ],
+        "transition": "start"
+    },
+    "post_start_test@FSMxTransition": {
+        "__type": "FSMxTransition",
+        "_id": {
+            "$oid": 7134958512980624492
+        },
+        "mandatory": [],
+        "order": [
+            "file-logbook"
+        ],
+        "transition": "start"
+    },
+    "pre_change_rate@FSMxTransition": {
+        "__type": "FSMxTransition",
+        "_id": {
+            "$oid": -2499156249509816846
+        },
+        "mandatory": [
+            "trigger-rate-specifier"
+        ],
+        "order": [
+            "trigger-rate-specifier"
+        ],
+        "transition": "change_rate"
+    },
+    "pre_start_prod@FSMxTransition": {
+        "__type": "FSMxTransition",
+        "_id": {
+            "$oid": 1902907358663671460
+        },
+        "mandatory": [
+            "usvc-provided-run-number",
+            "db-run-registry"
+        ],
+        "order": [
+            "usvc-provided-run-number",
+            "db-run-registry"
+        ],
+        "transition": "start"
+    },
+    "pre_start_test@FSMxTransition": {
+        "__type": "FSMxTransition",
+        "_id": {
+            "$oid": 7817369526704755530
+        },
+        "mandatory": [
+            "user-provided-run-number"
+        ],
+        "order": [
+            "user-provided-run-number",
+            "file-run-registry"
+        ],
+        "transition": "start"
+    },
+    "random-tc-generator@RandomTCMakerConf": {
+        "__type": "RandomTCMakerConf",
+        "_id": {
+            "$oid": -5045688576256015497
+        },
+        "latency_monitoring": true,
+        "tc_readout": {
+            "$id": 4949889468783170543
+        },
+        "template_for": "RandomTCMakerModule",
+        "time_distribution": "kUniform",
+        "timestamp_method": "kTimeSync",
+        "trigger_rate_hz": 1.0
+    },
+    "readout-start@ActionPlan": {
+        "__type": "ActionPlan",
+        "_id": {
+            "$oid": -1541400770298413607
+        },
+        "command": {
+            "$id": -8924595759158768122
+        },
+        "execution_policy": "modules-in-parallel",
+        "steps": [
+            {
+                "$id": 4909210405199662772
+            },
+            {
+                "$id": -1285243667495513361
+            },
+            {
+                "$id": -3013368504576371143
+            },
+            {
+                "$id": 6439587989376136740
+            }
+        ]
+    },
+    "readout-stop@ActionPlan": {
+        "__type": "ActionPlan",
+        "_id": {
+            "$oid": 4289124436655377083
+        },
+        "command": {
+            "$id": 4450394127753233097
+        },
+        "execution_policy": "modules-in-parallel",
+        "steps": [
+            {
+                "$id": 6439587989376136740
+            },
+            {
+                "$id": -3013368504576371143
+            },
+            {
+                "$id": -1285243667495513361
+            },
+            {
+                "$id": 4909210405199662772
+            }
+        ]
+    },
+    "rohw-1@RoHwConfig": {
+        "__type": "RoHwConfig",
+        "_id": {
+            "$oid": -9007231898967941256
+        },
+        "hitFindingProc": null,
+        "io_device": null,
+        "recv_processor": null,
+        "snb_storage": null
+    },
+    "root-controller@RCApplication": {
+        "__type": "RCApplication",
+        "_id": {
+            "$oid": -8042501479958522283
+        },
+        "application_environment": [],
+        "application_name": "drunc-controller",
+        "broadcaster": null,
+        "commandline_parameters": [],
+        "exposes_service": [
+            {
+                "$id": 1197564686834320078
+            }
+        ],
+        "fsm": {
+            "$id": 1317542122831399537
+        },
+        "log_path": "",
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "runs_on": {
+            "$id": 4346286162781865311
+        }
+    },
+    "root-controller_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 1197564686834320078
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "grpc"
+    },
+    "root-segment@Segment": {
+        "__type": "Segment",
+        "_id": {
+            "$oid": -4041016806436014631
+        },
+        "applications": [],
+        "controller": {
+            "$id": -8042501479958522283
+        },
+        "segments": [
+            {
+                "$id": 8634980868837111017
+            },
+            {
+                "$id": 7064124908167720692
+            },
+            {
+                "$id": -512911472913022874
+            },
+            {
+                "$id": 1131511831532890456
+            }
+        ]
+    },
+    "ru-01@ReadoutApplication": {
+        "__type": "ReadoutApplication",
+        "_id": {
+            "$oid": 6481177099522250780
+        },
+        "action_plans": [
+            {
+                "$id": -1541400770298413607
+            },
+            {
+                "$id": 4289124436655377083
+            }
+        ],
+        "application_environment": [],
+        "application_name": "daq_application",
+        "commandline_parameters": [],
+        "contains": [
+            {
+                "$id": -2058096636311291259
+            }
+        ],
+        "data_reader": {
+            "$id": -8455530853709113884
+        },
+        "data_recorder": null,
+        "exposes_service": [
+            {
+                "$id": -2612631019608500077
+            },
+            {
+                "$id": 1606466290674682102
+            },
+            {
+                "$id": -1969635041998546566
+            },
+            {
+                "$id": -8060044670613159372
+            },
+            {
+                "$id": 1048667974755962921
+            }
+        ],
+        "link_handler": {
+            "$id": -225671086524892293
+        },
+        "log_path": "",
+        "network_rules": [
+            {
+                "$id": 5871934481178249471
+            },
+            {
+                "$id": 3993095326996827044
+            },
+            {
+                "$id": -5429113872966229937
+            },
+            {
+                "$id": -7684300538563658655
+            }
+        ],
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "queue_rules": [
+            {
+                "$id": -8693529251217621888
+            },
+            {
+                "$id": -4636998523649694971
+            },
+            {
+                "$id": 347183807511219588
+            },
+            {
+                "$id": -3294723483688369800
+            }
+        ],
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "source_id": null,
+        "ta_generation_enabled": true,
+        "tp_generation_enabled": true,
+        "tp_handler": {
+            "$id": -3293982579500233445
+        },
+        "tp_source_ids": [
+            {
+                "$id": 1824299608644883446
+            },
+            {
+                "$id": -4056871439117089016
+            },
+            {
+                "$id": -4469171427288839351
+            }
+        ],
+        "uses": {
+            "$id": -9007231898967941256
+        }
+    },
+    "ru-01_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -2612631019608500077
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "ru-02@ReadoutApplication": {
+        "__type": "ReadoutApplication",
+        "_id": {
+            "$oid": -7151428121440192505
+        },
+        "action_plans": [
+            {
+                "$id": -1541400770298413607
+            },
+            {
+                "$id": 4289124436655377083
+            }
+        ],
+        "application_environment": [],
+        "application_name": "daq_application",
+        "commandline_parameters": [],
+        "contains": [
+            {
+                "$id": 6941063521314339788
+            }
+        ],
+        "data_reader": {
+            "$id": -8455530853709113884
+        },
+        "data_recorder": null,
+        "exposes_service": [
+            {
+                "$id": 9086753989178344251
+            }
+        ],
+        "link_handler": {
+            "$id": -225671086524892293
+        },
+        "log_path": "",
+        "network_rules": [
+            {
+                "$id": 5871934481178249471
+            },
+            {
+                "$id": 3993095326996827044
+            },
+            {
+                "$id": -5429113872966229937
+            },
+            {
+                "$id": -7684300538563658655
+            }
+        ],
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "queue_rules": [
+            {
+                "$id": -8693529251217621888
+            },
+            {
+                "$id": -4636998523649694971
+            },
+            {
+                "$id": 347183807511219588
+            },
+            {
+                "$id": -3294723483688369800
+            }
+        ],
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "source_id": null,
+        "ta_generation_enabled": true,
+        "tp_generation_enabled": true,
+        "tp_handler": {
+            "$id": -3293982579500233445
+        },
+        "tp_source_ids": [
+            {
+                "$id": 4771410572436251188
+            },
+            {
+                "$id": 4350015070797967770
+            },
+            {
+                "$id": 6833230173237783728
+            }
+        ],
+        "uses": {
+            "$id": -9007231898967941256
+        }
+    },
+    "ru-02_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 9086753989178344251
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "ru-1-rcv@DPDKReceiver": {
+        "__type": "DPDKReceiver",
+        "_id": {
+            "$oid": 7525265180028893613
+        },
+        "configuration": {
+            "$id": 4083516005950012203
+        },
+        "uses": {
+            "$id": 4470746108395285144
+        }
+    },
+    "ru-2-rcv@DPDKReceiver": {
+        "__type": "DPDKReceiver",
+        "_id": {
+            "$oid": 593079159986199680
+        },
+        "configuration": {
+            "$id": 4083516005950012203
+        },
+        "uses": {
+            "$id": 3389581078492938879
+        }
+    },
+    "ru-controller@RCApplication": {
+        "__type": "RCApplication",
+        "_id": {
+            "$oid": 5885096378360190447
+        },
+        "application_environment": [],
+        "application_name": "drunc-controller",
+        "broadcaster": null,
+        "commandline_parameters": [],
+        "exposes_service": [
+            {
+                "$id": 1377421424799929381
+            }
+        ],
+        "fsm": {
+            "$id": 473344210748837404
+        },
+        "log_path": "",
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "runs_on": {
+            "$id": 4346286162781865311
+        }
+    },
+    "ru-controller_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 1377421424799929381
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "grpc"
+    },
+    "ru-segment@Segment": {
+        "__type": "Segment",
+        "_id": {
+            "$oid": 8634980868837111017
+        },
+        "applications": [
+            {
+                "$id": 6481177099522250780
+            },
+            {
+                "$id": -7151428121440192505
+            }
+        ],
+        "controller": {
+            "$id": 5885096378360190447
+        },
+        "segments": []
+    },
+    "ru_1_readout@NetworkDevice": {
+        "__type": "NetworkDevice",
+        "_id": {
+            "$oid": 4470746108395285144
+        },
+        "interface_name": "data0",
+        "ip_address": [
+            "123.456.101.501"
+        ],
+        "mac_address": "00:00:00:00:00:00",
+        "network_mask": "",
+        "network_name": "Control",
+        "numa_id": 0,
+        "pcie_addr": "0"
+    },
+    "ru_2_readout@NetworkDevice": {
+        "__type": "NetworkDevice",
+        "_id": {
+            "$oid": 3389581078492938879
+        },
+        "interface_name": "data0",
+        "ip_address": [
+            "123.456.201.501"
+        ],
+        "mac_address": "00:00:00:00:00:00",
+        "network_mask": "",
+        "network_name": "Control",
+        "numa_id": 0,
+        "pcie_addr": "0"
+    },
+    "scrap@FSMCommand": {
+        "__type": "FSMCommand",
+        "_id": {
+            "$oid": -7095305901655530582
+        },
+        "cmd": "scrap",
+        "optional": true
+    },
+    "scrap@FSMtransition": {
+        "__type": "FSMtransition",
+        "_id": {
+            "$oid": 606640853599910489
+        },
+        "dest": "initial",
+        "source": "configured"
+    },
+    "shutdown@FSMsequence": {
+        "__type": "FSMsequence",
+        "_id": {
+            "$oid": 2576543562650845078
+        },
+        "name": [],
+        "sequence": [
+            {
+                "$id": 6318898671177525447
+            },
+            {
+                "$id": 2641512989273931297
+            },
+            {
+                "$id": 4450394127753233097
+            },
+            {
+                "$id": -7891058321570983463
+            },
+            {
+                "$id": -7095305901655530582
+            }
+        ]
+    },
+    "slow-all-monitoring@OpMonConf": {
+        "__type": "OpMonConf",
+        "_id": {
+            "$oid": -2974072121070790460
+        },
+        "interval_s": 10,
+        "level": 4294967295
+    },
+    "srcid-df-01@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": -3599218512879745221
+        },
+        "sid": 1,
+        "subsystem": "TR_Builder"
+    },
+    "srcid-df-02@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": -8059560873224474778
+        },
+        "sid": 2,
+        "subsystem": "TR_Builder"
+    },
+    "srcid-df-03@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": 6082595939846412942
+        },
+        "sid": 3,
+        "subsystem": "TR_Builder"
+    },
+    "srcid-tp-stream-writer@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": 7106417978581720544
+        },
+        "sid": 4,
+        "subsystem": "TR_Builder"
+    },
+    "start@FSMCommand": {
+        "__type": "FSMCommand",
+        "_id": {
+            "$oid": -8924595759158768122
+        },
+        "cmd": "start",
+        "optional": false
+    },
+    "start@FSMtransition": {
+        "__type": "FSMtransition",
+        "_id": {
+            "$oid": -1525900986749039104
+        },
+        "dest": "ready",
+        "source": "configured"
+    },
+    "start_run@FSMsequence": {
+        "__type": "FSMsequence",
+        "_id": {
+            "$oid": -1910207124221099940
+        },
+        "name": [],
+        "sequence": [
+            {
+                "$id": -5680776608571243624
+            },
+            {
+                "$id": -8924595759158768122
+            },
+            {
+                "$id": 7342998652964997475
+            }
+        ]
+    },
+    "stop@FSMCommand": {
+        "__type": "FSMCommand",
+        "_id": {
+            "$oid": -7891058321570983463
+        },
+        "cmd": "stop",
+        "optional": false
+    },
+    "stop@FSMtransition": {
+        "__type": "FSMtransition",
+        "_id": {
+            "$oid": -8121374763849731486
+        },
+        "dest": "configured",
+        "source": "trigger_sources_stopped"
+    },
+    "stop_run@FSMsequence": {
+        "__type": "FSMsequence",
+        "_id": {
+            "$oid": -4481161260096402787
+        },
+        "name": [],
+        "sequence": [
+            {
+                "$id": 6318898671177525447
+            },
+            {
+                "$id": 2641512989273931297
+            },
+            {
+                "$id": 4450394127753233097
+            },
+            {
+                "$id": -7891058321570983463
+            }
+        ]
+    },
+    "stop_trigger_sources@FSMCommand": {
+        "__type": "FSMCommand",
+        "_id": {
+            "$oid": 4450394127753233097
+        },
+        "cmd": "stop_trigger_sources",
+        "optional": false
+    },
+    "stop_trigger_sources@FSMtransition": {
+        "__type": "FSMtransition",
+        "_id": {
+            "$oid": -7256638234612913711
+        },
+        "dest": "trigger_sources_stopped",
+        "source": "dataflow_drained"
+    },
+    "storage-01@StorageDevice": {
+        "__type": "StorageDevice",
+        "_id": {
+            "$oid": 6712134715749558022
+        },
+        "numa_id": 0,
+        "storage": 1000
+    },
+    "stream-emu@StreamEmulationParameters": {
+        "TP_rate_per_channel": 1.0,
+        "__type": "StreamEmulationParameters",
+        "_id": {
+            "$oid": -817244364435400319
+        },
+        "data_file_name": "/cvmfs/dunedaq.opensciencegrid.org/assets/files/d/d/1/wibeth_output_all_zeros.bin",
+        "frame_error_rate_hz": 0.0,
+        "generate_periodic_adc_pattern": true,
+        "input_file_size_limit": 5777280,
+        "random_population_size": 100000,
+        "set_t0": true,
+        "tp_data_file_name": ""
+    },
+    "stream_100@DetectorStream": {
+        "__type": "DetectorStream",
+        "_id": {
+            "$oid": -3646769432786189048
+        },
+        "geo_id": {
+            "$id": 5846255125036462598
+        },
+        "source_id": 100
+    },
+    "stream_101@DetectorStream": {
+        "__type": "DetectorStream",
+        "_id": {
+            "$oid": -7041660180187067089
+        },
+        "geo_id": {
+            "$id": 1247353124457002920
+        },
+        "source_id": 101
+    },
+    "stream_102@DetectorStream": {
+        "__type": "DetectorStream",
+        "_id": {
+            "$oid": 6888220678392018646
+        },
+        "geo_id": {
+            "$id": 5877364727313937976
+        },
+        "source_id": 102
+    },
+    "stream_103@DetectorStream": {
+        "__type": "DetectorStream",
+        "_id": {
+            "$oid": 9091042392086553707
+        },
+        "geo_id": {
+            "$id": -7691691333827572232
+        },
+        "source_id": 103
+    },
+    "stream_104@DetectorStream": {
+        "__type": "DetectorStream",
+        "_id": {
+            "$oid": -5209109469966021798
+        },
+        "geo_id": {
+            "$id": -6380942424441616430
+        },
+        "source_id": 104
+    },
+    "stream_105@DetectorStream": {
+        "__type": "DetectorStream",
+        "_id": {
+            "$oid": -5868565401545741138
+        },
+        "geo_id": {
+            "$id": 7943062991877657156
+        },
+        "source_id": 105
+    },
+    "stream_106@DetectorStream": {
+        "__type": "DetectorStream",
+        "_id": {
+            "$oid": 7731171637233003311
+        },
+        "geo_id": {
+            "$id": -9032809244285987431
+        },
+        "source_id": 106
+    },
+    "stream_107@DetectorStream": {
+        "__type": "DetectorStream",
+        "_id": {
+            "$oid": 3208507144221661225
+        },
+        "geo_id": {
+            "$id": -1874308459592409000
+        },
+        "source_id": 107
+    },
+    "ta-input@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": -1528781341497062868
+        },
+        "capacity": 1000,
+        "data_type": "TriggerActivity",
+        "queue_type": "kFollySPSCQueue",
+        "uid_base": "ta_input_"
+    },
+    "ta-maker-adcwindow@TAMakerADCSimpleWindowAlgorithm": {
+        "__type": "TAMakerADCSimpleWindowAlgorithm",
+        "_id": {
+            "$oid": -3890475778478227854
+        },
+        "adc_threshold": 1000000,
+        "max_time_over_threshold": 10000,
+        "prescale": 10,
+        "window_length": 10000
+    },
+    "ta-maker-channeldistance@TAMakerChannelDistanceAlgorithm": {
+        "__type": "TAMakerChannelDistanceAlgorithm",
+        "_id": {
+            "$oid": -8143736776070075564
+        },
+        "max_channel_distance": 5,
+        "max_time_over_threshold": 10000,
+        "min_tps": 10,
+        "prescale": 100,
+        "window_length": 10000
+    },
+    "ta-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": 3993095326996827044
+        },
+        "descriptor": {
+            "$id": -8649585033354684983
+        },
+        "endpoint_class": "DataSubscriberModule"
+    },
+    "ta-publisher@NetworkConnectionDescriptor": {
+        "__type": "NetworkConnectionDescriptor",
+        "_id": {
+            "$oid": -8649585033354684983
+        },
+        "associated_service": {
+            "$id": -8060044670613159372
+        },
+        "connection_type": "kPubSub",
+        "data_type": "TriggerActivity",
+        "uid_base": "tas_"
+    },
+    "ta-queue-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": 4308640042424492336
+        },
+        "descriptor": {
+            "$id": -1528781341497062868
+        },
+        "destination_class": "TriggerDataHandlerModule"
+    },
+    "ta-srcid-1@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": -813406872529129622
+        },
+        "sid": 1100,
+        "subsystem": "Trigger"
+    },
+    "ta-subscriber-1@DataReaderConf": {
+        "__type": "DataReaderConf",
+        "_id": {
+            "$oid": 7216727983493788748
+        },
+        "emulation_conf": null,
+        "emulation_mode": false,
+        "template_for": "DataSubscriberModule"
+    },
+    "tc-adcwindow-algo@TCMakerADCSimpleWindowAlgorithm": {
+        "__type": "TCMakerADCSimpleWindowAlgorithm",
+        "_id": {
+            "$oid": -5883064359638737279
+        },
+        "prescale": 100,
+        "tc_type_name": "kADCSimpleWindow"
+    },
+    "tc-buffer-1_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 4939834645369606638
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "tc-input@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": 1260943578043793247
+        },
+        "capacity": 1000,
+        "data_type": "TriggerCandidate",
+        "queue_type": "kFollyMPMCQueue",
+        "uid_base": "tc_input_"
+    },
+    "tc-maker-1@TriggerApplication": {
+        "__type": "TriggerApplication",
+        "_id": {
+            "$oid": -4668848474340560179
+        },
+        "action_plans": [],
+        "application_environment": [],
+        "application_name": "daq_application",
+        "commandline_parameters": [],
+        "contains": [],
+        "data_subscriber": {
+            "$id": 7216727983493788748
+        },
+        "exposes_service": [
+            {
+                "$id": 4831717312559369014
+            },
+            {
+                "$id": -8060044670613159372
+            },
+            {
+                "$id": 1606466290674682102
+            }
+        ],
+        "log_path": "",
+        "network_rules": [
+            {
+                "$id": 3993095326996827044
+            },
+            {
+                "$id": 3078976656026163793
+            },
+            {
+                "$id": 1040374772902544034
+            }
+        ],
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "queue_rules": [
+            {
+                "$id": 4308640042424492336
+            }
+        ],
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "source_id": {
+            "$id": -813406872529129622
+        },
+        "trigger_inputs_handler": {
+            "$id": 6424865236007928243
+        },
+        "tx_generation_disabled": false
+    },
+    "tc-maker-1_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 4831717312559369014
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "tc-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": 3078976656026163793
+        },
+        "descriptor": {
+            "$id": 3296776309509357089
+        },
+        "endpoint_class": "DataSubscriberModule"
+    },
+    "tc-pass-through-algo@TCMakerPrescaleAlgorithm": {
+        "__type": "TCMakerPrescaleAlgorithm",
+        "_id": {
+            "$oid": -636867566335580642
+        },
+        "prescale": 100,
+        "tc_type_name": "kPrescale"
+    },
+    "tc-publisher@NetworkConnectionDescriptor": {
+        "__type": "NetworkConnectionDescriptor",
+        "_id": {
+            "$oid": 3296776309509357089
+        },
+        "associated_service": {
+            "$id": 607341850563023952
+        },
+        "connection_type": "kPubSub",
+        "data_type": "TriggerCandidate",
+        "uid_base": "tcs_"
+    },
+    "tc-queue-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": 4521867320197184818
+        },
+        "descriptor": {
+            "$id": 1260943578043793247
+        },
+        "destination_class": "TriggerDataHandlerModule"
+    },
+    "tc-srcid-1@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": -4760337062940450222
+        },
+        "sid": 10000,
+        "subsystem": "Trigger"
+    },
+    "tc-subscriber-1@DataReaderConf": {
+        "__type": "DataReaderConf",
+        "_id": {
+            "$oid": -7997909948421055993
+        },
+        "emulation_conf": null,
+        "emulation_mode": false,
+        "template_for": "DataSubscriberModule"
+    },
+    "td-dfo-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": -772678658706775848
+        },
+        "descriptor": {
+            "$id": 5302866005426017217
+        },
+        "endpoint_class": "DFOModule"
+    },
+    "td-input@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": 5026486302176454006
+        },
+        "capacity": 1000,
+        "data_type": "TriggerDecision",
+        "queue_type": "kFollySPSCQueue",
+        "uid_base": "td_input_"
+    },
+    "td-queue-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": -6835309104649921566
+        },
+        "descriptor": {
+            "$id": 5026486302176454006
+        },
+        "destination_class": "MLTModule"
+    },
+    "td-trb-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": -8633084430008952530
+        },
+        "descriptor": {
+            "$id": -3022540045884261586
+        },
+        "endpoint_class": "TRBModule"
+    },
+    "tde-raw-data-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": -2744873501369840441
+        },
+        "descriptor": {
+            "$id": -8965354016751934152
+        },
+        "destination_class": "FDDataHandlerModule"
+    },
+    "tde-raw-input@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": -8965354016751934152
+        },
+        "capacity": 10000,
+        "data_type": "TDEEthFrame",
+        "queue_type": "kFollySPSCQueue",
+        "uid_base": "raw_input_"
+    },
+    "test-config@Session": {
+        "__type": "Session",
+        "_id": {
+            "$oid": -4574323048123526175
+        },
+        "connectivity_service": {
+            "$id": -5661187337610562539
+        },
+        "controller_log_level": "INFO",
+        "data_rate_slowdown_factor": 1,
+        "data_request_timeout_ms": 1000,
+        "description": "",
+        "detector_configuration": {
+            "$id": 5381089525416540646
+        },
+        "disabled": [],
+        "environment": [
+            {
+                "$id": 1647900875298340266
+            },
+            {
+                "$id": -3250257309349503741
+            },
+            {
+                "$id": -5494444439700681392
+            },
+            {
+                "$id": 7289679455417699300
+            },
+            {
+                "$id": 7729533115722666460
+            }
+        ],
+        "infrastructure_applications": [
+            {
+                "$id": -9188823128986750199
+            }
+        ],
+        "log_path": "",
+        "opmon_uri": {
+            "$id": 5970592136078462897
+        },
+        "rte_script": "",
+        "segment": {
+            "$id": -4041016806436014631
+        }
+    },
+    "test-config2@Session": {
+        "__type": "Session",
+        "_id": {
+            "$oid": -4574323048123526175
+        },
+        "connectivity_service": {
+            "$id": -5661187337610562539
+        },
+        "controller_log_level": "INFO",
+        "data_rate_slowdown_factor": 1,
+        "data_request_timeout_ms": 1000,
+        "description": "",
+        "detector_configuration": {
+            "$id": 5381089525416540646
+        },
+        "disabled": [],
+        "environment": [
+            {
+                "$id": 1647900875298340266
+            },
+            {
+                "$id": -3250257309349503741
+            },
+            {
+                "$id": -5494444439700681392
+            },
+            {
+                "$id": 7289679455417699300
+            },
+            {
+                "$id": 7729533115722666460
+            }
+        ],
+        "infrastructure_applications": [
+            {
+                "$id": -9188823128986750199
+            }
+        ],
+        "log_path": "",
+        "opmon_uri": {
+            "$id": 5970592136078462897
+        },
+        "rte_script": "",
+        "segment": {
+            "$id": -4041016806436014631
+        }
+    },
+    "thread-pinning-file-post-conf@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": 3825233940451953899
+        },
+        "description": "",
+        "name": "post_conf",
+        "value": "/cvmfs/dunedaq.opensciencegrid.org/spack/releases/coredaq-v5.0.0-a9-1/spack-0.20.0/opt/spack/linux-almalinux9-x86_64/gcc-12.1.0/readoutlibs-v2.1.0-kkwlcckeyl7ltarpbd5bn6fn2nczjqmp/share/config/cpupins/cpupin-example.json"
+    },
+    "thread-pinning-file-post-start-prod@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": -4266646180584630408
+        },
+        "description": "",
+        "name": "post_start",
+        "value": "/cvmfs/dunedaq.opensciencegrid.org/spack/releases/coredaq-v5.0.0-a9-1/spack-0.20.0/opt/spack/linux-almalinux9-x86_64/gcc-12.1.0/readoutlibs-v2.1.0-kkwlcckeyl7ltarpbd5bn6fn2nczjqmp/share/config/cpupins/cpupin-example.json"
+    },
+    "thread-pinning-file-post-start-test@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": 173769904035575573
+        },
+        "description": "",
+        "name": "post_start",
+        "value": "/cvmfs/dunedaq.opensciencegrid.org/spack/releases/coredaq-v5.0.0-a9-1/spack-0.20.0/opt/spack/linux-almalinux9-x86_64/gcc-12.1.0/readoutlibs-v2.1.0-kkwlcckeyl7ltarpbd5bn6fn2nczjqmp/share/config/cpupins/cpupin-example.json"
+    },
+    "thread-pinning-file-pre-conf@Variable": {
+        "__type": "Variable",
+        "_id": {
+            "$oid": -3327037121366480883
+        },
+        "description": "",
+        "name": "pre_conf",
+        "value": "/cvmfs/dunedaq.opensciencegrid.org/spack/releases/coredaq-v5.0.0-a9-1/spack-0.20.0/opt/spack/linux-almalinux9-x86_64/gcc-12.1.0/readoutlibs-v2.1.0-kkwlcckeyl7ltarpbd5bn6fn2nczjqmp/share/config/cpupins/cpupin-example.json"
+    },
+    "thread-pinning@FSMaction": {
+        "__type": "FSMaction",
+        "_id": {
+            "$oid": 2749563045646099772
+        },
+        "commands": [],
+        "name": "thread-pinning",
+        "parameters": [
+            {
+                "$id": -3327037121366480883
+            },
+            {
+                "$id": 3825233940451953899
+            },
+            {
+                "$id": -4266646180584630408
+            },
+            {
+                "$id": 173769904035575573
+            }
+        ]
+    },
+    "ti-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": 6218339644490441235
+        },
+        "descriptor": {
+            "$id": -1403786773807845453
+        },
+        "endpoint_class": "TriggerDataHandlerModule"
+    },
+    "timeSyncs@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -1969635041998546566
+        },
+        "eth_device_name": "eno1",
+        "path": "",
+        "port": 0,
+        "protocol": "tcp"
+    },
+    "timesync-publisher@NetworkConnectionDescriptor": {
+        "__type": "NetworkConnectionDescriptor",
+        "_id": {
+            "$oid": 598182065868086239
+        },
+        "associated_service": {
+            "$id": -1969635041998546566
+        },
+        "connection_type": "kPubSub",
+        "data_type": "TimeSync",
+        "uid_base": "time_sync_"
+    },
+    "tp-file-params@FilenameParams": {
+        "__type": "FilenameParams",
+        "_id": {
+            "$oid": 3700926401880904800
+        },
+        "digits_for_file_index": 4,
+        "digits_for_run_number": 6,
+        "digits_for_trigger_number": 6,
+        "file_index_prefix": "",
+        "file_type_prefix": "tp",
+        "run_number_prefix": "run",
+        "trigger_number_prefix": ""
+    },
+    "tp-handler-step@DaqModulesGroupByType": {
+        "__type": "DaqModulesGroupByType",
+        "_id": {
+            "$oid": -1285243667495513361
+        },
+        "modules": [
+            "TriggerDataHandlerModule"
+        ]
+    },
+    "tp-input@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": -1258241413883941854
+        },
+        "capacity": 10000,
+        "data_type": "TriggerPrimitive",
+        "queue_type": "kFollyMPMCQueue",
+        "uid_base": "tp_input_"
+    },
+    "tp-processor@TPDataProcessor": {
+        "__type": "TPDataProcessor",
+        "_id": {
+            "$oid": 8980007546994294001
+        },
+        "algorithms": [
+            {
+                "$id": -3054464924013122575
+            }
+        ],
+        "latency_monitoring": true,
+        "print_tp_info": false,
+        "queue_sizes": 10000,
+        "thread_names_prefix": "proc-"
+    },
+    "tp-queue-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": -4636998523649694971
+        },
+        "descriptor": {
+            "$id": -1258241413883941854
+        },
+        "destination_class": "TriggerDataHandlerModule"
+    },
+    "tp-srcid-1000@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": 1824299608644883446
+        },
+        "sid": 1000,
+        "subsystem": "Trigger"
+    },
+    "tp-srcid-1001@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": -4056871439117089016
+        },
+        "sid": 1001,
+        "subsystem": "Trigger"
+    },
+    "tp-srcid-1002@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": -4469171427288839351
+        },
+        "sid": 1002,
+        "subsystem": "Trigger"
+    },
+    "tp-srcid-2000@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": 4771410572436251188
+        },
+        "sid": 2000,
+        "subsystem": "Trigger"
+    },
+    "tp-srcid-2001@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": 4350015070797967770
+        },
+        "sid": 2001,
+        "subsystem": "Trigger"
+    },
+    "tp-srcid-2002@SourceIDConf": {
+        "__type": "SourceIDConf",
+        "_id": {
+            "$oid": 6833230173237783728
+        },
+        "sid": 2002,
+        "subsystem": "Trigger"
+    },
+    "tp-stream-writer-conf@TPStreamWriterConf": {
+        "__type": "TPStreamWriterConf",
+        "_id": {
+            "$oid": 8179758218829676604
+        },
+        "data_store_params": {
+            "$id": 6194643324277132459
+        },
+        "tp_accumulation_inactivity_time_before_write_sec": 1.0,
+        "tp_accumulation_interval": 62500000,
+        "warn_user_when_tardy_tps_are_discarded": true
+    },
+    "tp-stream-writer@TPStreamWriterApplication": {
+        "__type": "TPStreamWriterApplication",
+        "_id": {
+            "$oid": 4651745927753204316
+        },
+        "action_plans": [],
+        "application_environment": [],
+        "application_name": "daq_application",
+        "commandline_parameters": [],
+        "exposes_service": [
+            {
+                "$id": -9171501398554229205
+            }
+        ],
+        "log_path": "",
+        "network_rules": [
+            {
+                "$id": -7684300538563658655
+            }
+        ],
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "queue_rules": [],
+        "runs_on": {
+            "$id": 4346286162781865311
+        },
+        "source_id": {
+            "$id": 7106417978581720544
+        },
+        "tp_writer": {
+            "$id": 8179758218829676604
+        }
+    },
+    "tp-stream-writer_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -9171501398554229205
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "rest"
+    },
+    "tp_file_layout@HDF5FileLayoutParams": {
+        "__type": "HDF5FileLayoutParams",
+        "_id": {
+            "$oid": 6073462821024753270
+        },
+        "digits_for_record_number": 6,
+        "digits_for_sequence_number": 0,
+        "path_params_list": [
+            {
+                "$id": -2927023159466274506
+            }
+        ],
+        "raw_data_group_name": "RawData",
+        "record_header_dataset_name": "TimeSliceHeader",
+        "record_name_prefix": "TimeSlice",
+        "view_group_name": "Views"
+    },
+    "tpg-absrs-proc@AVXAbsRunSumProcessor": {
+        "__type": "AVXAbsRunSumProcessor",
+        "_id": {
+            "$oid": -4214327887378843103
+        },
+        "memory_factor_plane0": 8,
+        "memory_factor_plane1": 8,
+        "memory_factor_plane2": 8,
+        "scale_factor_plane0": 10,
+        "scale_factor_plane1": 10,
+        "scale_factor_plane2": 10
+    },
+    "tpg-pedsub-proc@AVXFrugalPedestalSubtractProcessor": {
+        "__type": "AVXFrugalPedestalSubtractProcessor",
+        "_id": {
+            "$oid": 7187139309070005254
+        },
+        "accum_limit": 10
+    },
+    "tpg-rs-proc@AVXRunSumProcessor": {
+        "__type": "AVXRunSumProcessor",
+        "_id": {
+            "$oid": -3146322499639472574
+        },
+        "memory_factor_plane0": 8,
+        "memory_factor_plane1": 8,
+        "memory_factor_plane2": 8,
+        "scale_factor_plane0": 10,
+        "scale_factor_plane1": 10,
+        "scale_factor_plane2": 10
+    },
+    "tpg-threshold-proc@AVXThresholdProcessor": {
+        "__type": "AVXThresholdProcessor",
+        "_id": {
+            "$oid": -5300446873161571008
+        },
+        "plane0": 100,
+        "plane1": 100,
+        "plane2": 100
+    },
+    "tpset-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": -7684300538563658655
+        },
+        "descriptor": {
+            "$id": -144940059884343801
+        },
+        "endpoint_class": "TriggerDataHandlerModule"
+    },
+    "tpset-publisher@NetworkConnectionDescriptor": {
+        "__type": "NetworkConnectionDescriptor",
+        "_id": {
+            "$oid": -144940059884343801
+        },
+        "associated_service": {
+            "$id": 1048667974755962921
+        },
+        "connection_type": "kPubSub",
+        "data_type": "TPSet",
+        "uid_base": "tps_"
+    },
+    "tpset-subscriber-1@DataReaderConf": {
+        "__type": "DataReaderConf",
+        "_id": {
+            "$oid": 1890593199410002921
+        },
+        "emulation_conf": null,
+        "emulation_mode": false,
+        "template_for": "DataSubscriberModule"
+    },
+    "trb-01@TRBConf": {
+        "__type": "TRBConf",
+        "_id": {
+            "$oid": 7185342472935669564
+        },
+        "max_time_window": 0,
+        "queues_timeout": 100,
+        "source_id": 0,
+        "trigger_record_timeout_ms": 2858
+    },
+    "trg-controller@RCApplication": {
+        "__type": "RCApplication",
+        "_id": {
+            "$oid": 8752787950533056823
+        },
+        "application_environment": [],
+        "application_name": "drunc-controller",
+        "broadcaster": null,
+        "commandline_parameters": [],
+        "exposes_service": [
+            {
+                "$id": -4909192506493131801
+            }
+        ],
+        "fsm": {
+            "$id": 473344210748837404
+        },
+        "log_path": "",
+        "opmon_conf": {
+            "$id": -2974072121070790460
+        },
+        "runs_on": {
+            "$id": 4346286162781865311
+        }
+    },
+    "trg-controller_control@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -4909192506493131801
+        },
+        "eth_device_name": "",
+        "path": "",
+        "port": 0,
+        "protocol": "grpc"
+    },
+    "trg-segment@Segment": {
+        "__type": "Segment",
+        "_id": {
+            "$oid": -512911472913022874
+        },
+        "applications": [
+            {
+                "$id": -4668848474340560179
+            },
+            {
+                "$id": -9137437907240927654
+            }
+        ],
+        "controller": {
+            "$id": 8752787950533056823
+        },
+        "segments": []
+    },
+    "trg-tp-handler@DataHandlerConf": {
+        "__type": "DataHandlerConf",
+        "_id": {
+            "$oid": 6624035344832657964
+        },
+        "data_processor": {
+            "$id": 8980007546994294001
+        },
+        "generate_timesync": false,
+        "input_data_type": "TriggerPrimitive",
+        "latency_buffer": {
+            "$id": 6167737844880356132
+        },
+        "post_processing_delay_ticks": 0,
+        "request_handler": {
+            "$id": 8435329566918090377
+        },
+        "template_for": "TriggerDataHandlerModule"
+    },
+    "trigger-decisions-mlt-dfo@NetworkConnectionDescriptor": {
+        "__type": "NetworkConnectionDescriptor",
+        "_id": {
+            "$oid": 5302866005426017217
+        },
+        "associated_service": {
+            "$id": 7092613444308277943
+        },
+        "connection_type": "kSendRecv",
+        "data_type": "TriggerDecision",
+        "uid_base": "td_mlt_dfo"
+    },
+    "trigger-decisions@NetworkConnectionDescriptor": {
+        "__type": "NetworkConnectionDescriptor",
+        "_id": {
+            "$oid": -3022540045884261586
+        },
+        "associated_service": {
+            "$id": 7092613444308277943
+        },
+        "connection_type": "kSendRecv",
+        "data_type": "TriggerDecision",
+        "uid_base": "trigger_decision_"
+    },
+    "trigger-inhibits@NetworkConnectionDescriptor": {
+        "__type": "NetworkConnectionDescriptor",
+        "_id": {
+            "$oid": -1403786773807845453
+        },
+        "associated_service": {
+            "$id": -4929193354507273179
+        },
+        "connection_type": "kSendRecv",
+        "data_type": "TriggerInhibit",
+        "uid_base": "trigger_inhibit"
+    },
+    "trigger-rate-specifier@FSMaction": {
+        "__type": "FSMaction",
+        "_id": {
+            "$oid": 103338135377328037
+        },
+        "commands": [],
+        "name": "trigger-rate-specifier",
+        "parameters": []
+    },
+    "trigger-record-q-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": -5585229754385296821
+        },
+        "descriptor": {
+            "$id": 5122047259390678731
+        },
+        "destination_class": "DataWriterModule"
+    },
+    "trigger-records@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": 5122047259390678731
+        },
+        "capacity": 11,
+        "data_type": "TriggerRecord",
+        "queue_type": "kFollySPSCQueue",
+        "uid_base": "trigger_records_"
+    },
+    "triggerActivities@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -8060044670613159372
+        },
+        "eth_device_name": "eno1",
+        "path": "",
+        "port": 0,
+        "protocol": "tcp"
+    },
+    "triggerCandidates@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 607341850563023952
+        },
+        "eth_device_name": "eno1",
+        "path": "",
+        "port": 0,
+        "protocol": "tcp"
+    },
+    "triggerDecisions@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 7092613444308277943
+        },
+        "eth_device_name": "eno1",
+        "path": "",
+        "port": 0,
+        "protocol": "tcp"
+    },
+    "triggerInhibits@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": -4929193354507273179
+        },
+        "eth_device_name": "eno1",
+        "path": "",
+        "port": 0,
+        "protocol": "tcp"
+    },
+    "triggerPrimitives@Service": {
+        "__type": "Service",
+        "_id": {
+            "$oid": 1048667974755962921
+        },
+        "eth_device_name": "eno1",
+        "path": "",
+        "port": 0,
+        "protocol": "tcp"
+    },
+    "ts-fdp-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": -1006423468512308299
+        },
+        "descriptor": {
+            "$id": 598182065868086239
+        },
+        "endpoint_class": "FakeDataProdModule"
+    },
+    "ts-hsi-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": -4848690142302382666
+        },
+        "descriptor": {
+            "$id": 598182065868086239
+        },
+        "endpoint_class": "HSIDataHandlerModule"
+    },
+    "ts-net-rule@NetworkConnectionRule": {
+        "__type": "NetworkConnectionRule",
+        "_id": {
+            "$oid": 5871934481178249471
+        },
+        "descriptor": {
+            "$id": 598182065868086239
+        },
+        "endpoint_class": "FDDataHandlerModule"
+    },
+    "user-provided-run-number@FSMaction": {
+        "__type": "FSMaction",
+        "_id": {
+            "$oid": 5978243986255443821
+        },
+        "commands": [],
+        "name": "user-provided-run-number",
+        "parameters": []
+    },
+    "usvc-provided-run-number@FSMaction": {
+        "__type": "FSMaction",
+        "_id": {
+            "$oid": -7909335104541007656
+        },
+        "commands": [],
+        "name": "usvc-provided-run-number",
+        "parameters": []
+    },
+    "vlocalhost@VirtualHost": {
+        "__type": "VirtualHost",
+        "_id": {
+            "$oid": 4346286162781865311
+        },
+        "runs_on": {
+            "$id": 3441322135966783919
+        },
+        "uses": [
+            {
+                "$id": 9110976161599344164
+            }
+        ]
+    },
+    "wib-callback-raw-data-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": 4338148543854397699
+        },
+        "descriptor": {
+            "$id": -2890958571204449737
+        },
+        "destination_class": "FDDataHandlerModule"
+    },
+    "wib-eth-callback-bypass@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": -2890958571204449737
+        },
+        "capacity": 10000,
+        "data_type": "WIBEthFrame",
+        "queue_type": "kFollySPSCQueue",
+        "uid_base": "cb_raw_input_"
+    },
+    "wib-eth-raw-data-rule@QueueConnectionRule": {
+        "__type": "QueueConnectionRule",
+        "_id": {
+            "$oid": 347183807511219588
+        },
+        "descriptor": {
+            "$id": -9215272769625059301
+        },
+        "destination_class": "FDDataHandlerModule"
+    },
+    "wib-eth-raw-input@QueueDescriptor": {
+        "__type": "QueueDescriptor",
+        "_id": {
+            "$oid": -9215272769625059301
+        },
+        "capacity": 10000,
+        "data_type": "WIBEthFrame",
+        "queue_type": "kFollySPSCQueue",
+        "uid_base": "raw_input_"
+    },
+    "wib_101_hermes0@NetworkInterface": {
+        "__type": "NetworkInterface",
+        "_id": {
+            "$oid": 1333264219154944462
+        },
+        "interface_name": "hermes0",
+        "ip_address": [
+            "123.456.101.000"
+        ],
+        "mac_address": "00:00:00:00:00:00",
+        "network_mask": "",
+        "network_name": "Control"
+    },
+    "wib_101_link0@HermesDataSender": {
+        "__type": "HermesDataSender",
+        "_id": {
+            "$oid": -4443782160127480029
+        },
+        "contains": [
+            {
+                "$id": -3646769432786189048
+            },
+            {
+                "$id": -7041660180187067089
+            },
+            {
+                "$id": 6888220678392018646
+            },
+            {
+                "$id": 9091042392086553707
+            }
+        ],
+        "control_host": "localhost",
+        "link_id": 0,
+        "port": 17476,
+        "uses": {
+            "$id": 1333264219154944462
+        }
+    },
+    "wib_201_hermes0@NetworkInterface": {
+        "__type": "NetworkInterface",
+        "_id": {
+            "$oid": -4151987393307327763
+        },
+        "interface_name": "hermes0",
+        "ip_address": [
+            "123.456.101.001"
+        ],
+        "mac_address": "00:00:00:00:00:00",
+        "network_mask": "",
+        "network_name": "Control"
+    },
+    "wib_201_link0@HermesDataSender": {
+        "__type": "HermesDataSender",
+        "_id": {
+            "$oid": -6121536797194573901
+        },
+        "contains": [
+            {
+                "$id": -5209109469966021798
+            },
+            {
+                "$id": -5868565401545741138
+            },
+            {
+                "$id": 7731171637233003311
+            },
+            {
+                "$id": 3208507144221661225
+            }
+        ],
+        "control_host": "localhost",
+        "link_id": 0,
+        "port": 17476,
+        "uses": {
+            "$id": -4151987393307327763
+        }
+    }
+}
