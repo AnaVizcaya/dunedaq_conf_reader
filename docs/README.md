@@ -12,7 +12,7 @@ pip install .
  - Create an instance of that class, with the path of the file you are reading, and the `Session` identifier.
 
 ```python
-from offline_conf_reader.dunedaq_conf_data_extractor import DUNEDAQConfDataExtractor
+from dunedaq_conf_reader.dunedaq_conf_data_extractor import DUNEDAQConfDataExtractor
 cde = DUNEDAQConfDataExtractor("path/to/file", "session_name")
 ```
 
