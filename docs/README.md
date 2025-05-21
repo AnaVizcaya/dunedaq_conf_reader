@@ -1,11 +1,27 @@
 # A python-native reader for the DUNE-DAQ OKS data
 
+This repo makes the information inside the "OKS jsonified" available to the offline. These are found in the run registry.
+
+This repo installs 2 executables, that can be installed without the DAQ:
+- `dunedaq-conf-downloader` to retrieve configurations from the run registry,
+- `dunedaq-conf-reader` to parse the jsonified OKS and display "interesting" variables in the configuration.
+
 ## Installation
 ```bash
-git clone https://github.com/plasorak/offline_conf_reader.git
-cd offline_conf_reader
-pip install .
+$ git clone https://github.com/plasorak/offline_conf_reader.git
+$ cd offline_conf_reader
+$ python -m venv venv
+$ source venv/bin/activate
+(venv) $ pip install .
 ```
+
+And next time you log on:
+```bash
+$ cd offline_conf_reader/
+$ source venv/bin/activate
+```
+
+If you don't have `~/.drunc.json`, `dunedaq-conf-downloader` will not work. Get it from DAQ people.
 
 ## Python usage
  - Import the `DUNEDAQConfDataExtractor`,
@@ -67,7 +83,6 @@ dunedaq-conf-downloader download-run-conf 36598
 # dunedaq-conf-reader run_36598/tmpyonzimsb.data.json np02-session
 
 ### or
-
 dunedaq-conf-downloader download-last-n-run-conf 10
 # Downloading the last 10 run configurations
 # Downloading configuration for run 36600
