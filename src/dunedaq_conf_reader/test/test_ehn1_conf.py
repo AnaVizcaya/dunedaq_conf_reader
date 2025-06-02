@@ -1,6 +1,6 @@
 import pytest
 from dunedaq_conf_reader.test.fixtures import ehn1_daqconfig_file_and_sessions, variables_extracted
-from  dunedaq_conf_reader.dunedaq_conf_data_extractor import DUNEDAQConfDataExtractor
+from dunedaq_conf_reader.dunedaq_conf_data_extractor import DUNEDAQConfDataExtractor
 from rich import print
 import os
 

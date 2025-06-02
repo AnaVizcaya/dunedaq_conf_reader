@@ -5,24 +5,28 @@ import tempfile
 import os
 from pathlib import Path
 from rich import print
-from daqconf.jsonify import jsonify_xml_data
 
 
 @pytest.fixture
 def ehn1_daqconfig_file_and_sessions(branch_name, repository):
+    try:
+        from daqconf.jsonify import jsonify_xml_data
+    except ImportError:
+        pytest.skip("daqconf is not installed, skipping")
+
     files_sessions = {}
 
     tempdir = tempfile.mkdtemp(prefix="ehn1-daqconfigs")
     repo = Repo.clone_from(repository, tempdir, branch=branch_name)
+    os.environ["DUNEDAQ_DB_PATH"] = os.environ["DUNEDAQ_DB_PATH"] + ":" + str(tempdir)
 
-    repo_directories = [x for x in os.listdir(tempdir) if os.path.isdir(Path(tempdir)/x)]
+    # repo_directories = [x for x in os.listdir(tempdir) if os.path.isdir(Path(tempdir)/x)]
 
     root_dir = Path(tempdir) / "sessions"
 
     for session_file in os.listdir(root_dir):
 
         print(f"\nJsonifying DB \'{session_file}\'")
-        os.environ["DUNEDAQ_DB_PATH"] = os.environ["DUNEDAQ_DB_PATH"] + ":".join(repo_directories)
         xml_file = str(root_dir/session_file)
         json_file = xml_file.replace(".xml", ".json")
         jsonify_xml_data(xml_file, json_file)
