@@ -39,6 +39,9 @@ class DUNEDAQConfDataExtractor:
     strobe_skip          : dict[str,int ] = None
     test_cap             : dict[str,bool] = None
 
+    # Run settings
+    offline_data_stream  : dict[str,str ] = None
+
     def __post_init__(self):
         if self.oks_file_path == None or self.session_name == None:
             return
@@ -66,6 +69,9 @@ class DUNEDAQConfDataExtractor:
         self.strobe_length    = {}
         self.strobe_skip      = {}
         self.test_cap         = {}
+
+        #run settings
+        self.offline_data_stream = {}
 
         if self.load_json: 
             conf_data = self.oks_file_path
