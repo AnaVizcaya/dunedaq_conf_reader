@@ -14,6 +14,7 @@ leak_dict = {
 class DUNEDAQConfDataExtractor:
     oks_file_path: Path
     session_name:str
+    load_json:bool = False
 
     # WIB settings
     adc_test_pattern     : dict[str,bool] = None
@@ -37,6 +38,9 @@ class DUNEDAQConfDataExtractor:
     strobe_length        : dict[str,int ] = None
     strobe_skip          : dict[str,int ] = None
     test_cap             : dict[str,bool] = None
+
+    # Run settings
+    offline_data_stream  : dict[str,str ] = None
 
     def __post_init__(self):
         if self.oks_file_path == None or self.session_name == None:
@@ -66,9 +70,15 @@ class DUNEDAQConfDataExtractor:
         self.strobe_skip      = {}
         self.test_cap         = {}
 
-        conf_data = {}
-        with open(self.oks_file_path) as f:
-            conf_data = json.load(f)
+        #run settings
+        self.offline_data_stream = {}
+
+        if self.load_json: 
+            conf_data = self.oks_file_path
+        else:
+            conf_data = {}
+            with open(self.oks_file_path) as f:
+                conf_data = json.load(f)
 
         session = find_session(conf_data, self.session_name)
         logging.debug(f'{session=}')
