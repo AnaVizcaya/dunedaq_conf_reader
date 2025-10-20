@@ -2,7 +2,7 @@ from dataclasses import dataclass, Field, fields
 import json
 from pathlib import Path
 import logging
-from dunedaq_conf_reader.oks_utils import find_session, get, get_applications
+from dunedaq_conf_reader.oks_utils import find_session, get, get_applications, get_one_object
 detector_types = ['CRP', 'APA']
 
 leak_dict = {
@@ -81,6 +81,7 @@ class DUNEDAQConfDataExtractor:
                 conf_data = json.load(f)
 
         session = find_session(conf_data, self.session_name)
+        #print(f'----session name {self.session_name} found the following session: {session}')
         logging.debug(f'{session=}')
         wiec_applications = get_applications(
             conf_data,
@@ -89,7 +90,14 @@ class DUNEDAQConfDataExtractor:
         )
         logging.info(f'Found {len(wiec_applications)} WIEC applications')
 
+        detector_config1 = get_one_object(
+                conf_data,
+                class_name="DetectorConfig")
+
+        print(f'Lo encontro_1! {detector_config1}')
+
         for wiec_application in wiec_applications:
+            print(f"and the wiec {wiec_application}")
             wib = wiec_application['__name'].split("@")[0].upper()
 
             logging.info(f'Processing WIEC application: \'{wib}\'')
