@@ -2,7 +2,8 @@ from dataclasses import dataclass, Field, fields
 import json
 from pathlib import Path
 import logging
-from dunedaq_conf_reader.oks_utils import find_session, get, get_applications, get_one_object
+from dunedaq_conf_reader.oks_utils import find_session, get, get_applications, get_one_object, find_key_value
+
 detector_types = ['CRP', 'APA']
 
 leak_dict = {
@@ -73,8 +74,9 @@ class DUNEDAQConfDataExtractor:
         self.test_cap         = {}
 
         #detector settings
-        self.offline_data_stream = {}
-        self.
+        self.offline_data_stream = ''
+        self.op_env              = ''
+        self.tpg_channel_map     = ''
 
         if self.load_json: 
             conf_data = self.oks_file_path
@@ -93,11 +95,13 @@ class DUNEDAQConfDataExtractor:
         )
         logging.info(f'Found {len(wiec_applications)} WIEC applications')
 
-        detector_config1 = get_one_object(
+        detector_config = get_one_object(
                 conf_data,
                 class_name="DetectorConfig")
 
-        print(f'Lo encontro_1! {detector_config1}')
+        self.offline_data_stream = find_key_value(detector_config, "offline_data_stream")
+        self.op_env              = find_key_value(detector_config, "op_env")
+        self.tpg_channel_map     = find_key_value(detector_config, "tpg_channel_map")
 
         for wiec_application in wiec_applications:
             wib = wiec_application['__name'].split("@")[0].upper()
