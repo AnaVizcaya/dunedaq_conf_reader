@@ -40,7 +40,9 @@ class DUNEDAQConfDataExtractor:
     test_cap             : dict[str,bool] = None
 
     # Run settings
-    offline_data_stream  : dict[str,str ] = None
+    offline_data_stream  : str = None
+    op_env               : str = None
+    tpg_channel_map      : str = None
 
     def __post_init__(self):
         if self.oks_file_path == None or self.session_name == None:
@@ -70,8 +72,9 @@ class DUNEDAQConfDataExtractor:
         self.strobe_skip      = {}
         self.test_cap         = {}
 
-        #run settings
+        #detector settings
         self.offline_data_stream = {}
+        self.
 
         if self.load_json: 
             conf_data = self.oks_file_path
@@ -97,7 +100,6 @@ class DUNEDAQConfDataExtractor:
         print(f'Lo encontro_1! {detector_config1}')
 
         for wiec_application in wiec_applications:
-            print(f"and the wiec {wiec_application}")
             wib = wiec_application['__name'].split("@")[0].upper()
 
             logging.info(f'Processing WIEC application: \'{wib}\'')
